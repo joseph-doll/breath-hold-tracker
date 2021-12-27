@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breath Holds Index</title>
+</head>
+<body>
+    <h1>All Breath Holds</h1>
+    <a href="/breathholds/new">Log New Hold</a>
+    <ul>
+        <% for (let breathhold of breathholds) { %> 
+            <li><%= breathhold.name %> - <%= breathhold.duration %> sec - <a href="/breathholds/<%= breathhold._id %> " style="font-size: .9rem">Details</a></li>
+        <% } %> 
+    </ul>
+</body>
+</html>
