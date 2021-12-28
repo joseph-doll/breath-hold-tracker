@@ -1,42 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Breath Hold</title>
-</head>
-<body>
-    <h1>Edit Breath Hold</h1>
-    <div>
-        <form action="/breathholds/<%= breathhold._id %>?_method=PUT" method="POST">
-            <div>
-                <label for="name">Name: <br></label>
-                <input type="text" id="name" name="breathhold[name]" value="<%= breathhold.name %> ">
-            </div>
-            <div>
-                <label for="duration">Duration (seconds): <br></label>
-                <input type="text" id="duration" name="breathhold[duration]" value="<%= breathhold.duration %> ">
-            </div>
-            <div>
-                <label for="type">Pre-hold Breath Type (inhale/exhale): <br></label>
-                <input type="text" id="type" name="breathhold[type]" value="<%= breathhold.type %> "> 
-            </div>
-            <div>
-                <label for="orifice">Orifice: <br></label>
-                <input type="text" id="orifice" name="breathhold[orifice]" value="<%= breathhold.orifice %> "> 
-            </div>
-            <div>
-                <label for="position">Position: (seated/lying down/etc.) <br></label>
-                <input type="text" id="position" name="breathhold[position]" value="<%= breathhold.position %> "> 
-            </div>
-            <div>
-                <label for="underInfluence">Under the Infleuence (yes/no): <br></label>
-                <input type="text" id="underInfluence" name="breathhold[underInfluence]" value="<%= breathhold.underInfluence %> "> 
-            </div><br>
-            <button>Edit Hold</button>
-        </form>
-    </div><br>
-    <a href="/breathholds/<%= breathhold._id %> "><--Back to Hold</a>
-</body>
-</html>
+<% layout('layouts/boilerplate') %>
+<div class="col-md-6 offset-md-3">
+    <div class="row">
+        <h4 class="text-center">EDIT BREATH HOLD</h4>
+            <form action="/breathholds/<%= breathhold._id %>?_method=PUT" method="POST">
+                <div class="mb-1">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" type="text" id="name" name="breathhold[name]" value="<%= breathhold.name %>"/>
+                </div>
+                <div class="mb-1">
+                    <label class="form-label" for="duration">Duration</label>
+                    <input class="form-control" type="text" id="duration" name="breathhold[duration]" value="<%= breathhold.duration %>"/>
+                    <div id="nameHelp" class="form-text text-muted" style="font-size: .7rem;">seconds</div>
+                </div>
+                <div class="mb-1">
+                    <label class="form-label" for="type">Breath Type</label>
+                    <input class="form-control" type="text" id="type" name="breathhold[type]" value="<%= breathhold.type%>"/>
+                    <div id="breathHelp" class="form-text text-muted" style="font-size: .7rem;">inhale | exhale</div>
+                </div>
+                <div class="mb-1">
+                    <label class="form-label" for="orifice">Orifice</label>
+                    <input class="form-control" type="text" id="orifice" name="breathhold[orifice]" value="<%= breathhold.orifice %>"/>
+                    <div id="orificeHelp" class="form-text text-muted" style="font-size: .7rem;">nose | mouth</div>
+                </div>
+                <div class="mb-1">
+                    <label class="form-label" for="position">Position</label>
+                    <input class="form-control" type="text" id="position" name="breathhold[position]" value="<%= breathhold.position %>"/>
+                    <div id="positionHelp" class="form-text text-muted" style="font-size: .7rem;">seated | lying | reclined | etc</div>
+                </div>
+                <div class="mb-1">
+                    <label class="form-label" for="underInfluence">Under the Influence</label>
+                    <input class="form-control" type="text" id="underInfluence" name="breathhold[underInfluence]" value="<%= breathhold.underInfluence %>"/>
+                    <div id="underInfluenceHelp" class="form-text text-muted" style="font-size: .7rem;">yes | no</div>
+                </div>
+                <div class="d-grid gap-2 pb-3">
+                    <button class="btn btn-danger mt-2">SUBMIT CHANGES</button>
+                </div>
+                <!-- <div class="d-grid gap-2 pb-3">
+                    <button class="btn btn-danger mt-2">CANCEL</button>
+                </div> -->
+            </form>
+        <div class="card border-0 mb-3">
+            <a href="/breathholds/<%= breathhold._id %>" role="button" class="btn btn-secondary btn-sm">CANCEL</a>
+        </div>
+    </div>        
+</div>

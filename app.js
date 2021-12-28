@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const methodOverride = require('method-override');
 const BreathHold = require('./models/breathHold');
+const ejsMate = require('ejs-mate');
 
 mongoose.connect('mongodb://127.0.0.1:27017/breath-hold-tracker', {
     useNewUrlParser: true,
@@ -19,6 +20,8 @@ db.once('open', () => {
 
 
 const app = express();
+
+app.engine('ejs', ejsMate); //use ejs-locals for all ejs templates
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));

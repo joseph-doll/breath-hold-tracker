@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breath Hold Show</title>
-</head>
-<body>
-    <h1>Breath Hold Show</h1>
-        <div>
-            Name: <%= breathhold.name %> <br>
-            Duration: <%= breathhold.duration %> <br>
-            Breath Type: <%= breathhold.type %> <br>
-            Orifice: <%= breathhold.orifice %> <br>
-            Position: <%= breathhold.position %> <br>
-            Under the Influence: <%= breathhold.underInfluence %>
+<% layout('layouts/boilerplate') %> 
+    <div class="col-md-6 offset-md-3">
+        <h4 class="text-center">BREATH HOLD</h4>
+        <div class="card mb-3">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Name: <%= breathhold.name %> </li>
+              <li class="list-group-item">Duration: <%= breathhold.duration %> seconds </li>
+              <li class="list-group-item">Breath Type: <%= breathhold.type %> </li>
+              <li class="list-group-item">Orifice: <%= breathhold.orifice %></li>
+              <li class="list-group-item">Position: <%= breathhold.position %> </li>
+              <li class="list-group-item">Under the Influence: <%= breathhold.underInfluence %> </li>
+              <li class="list-group-item">Created: <%= breathhold.createdAt.toLocaleString('en-US') %> </li>
+            </ul>
         </div>
-        <br>
-        <form action="/breathholds/<%= breathhold._id %>?_method=DELETE" method="POST">
-            <button>Delete Hold</button>
-         </form>
-         <br>
-        <footer>
-            <a href="/breathholds/<%= breathhold._id %>/edit">Edit this Hold</a><br><br>
-            <a href="/breathholds">All Holds</a>
-        </footer>
-</body>
-</html>
+        <div class="card border-0 mb-3">
+            <a href="/breathholds/<%= breathhold._id %>/edit" role="button" class="btn btn-primary btn-sm">EDIT HOLD</a>
+        </div>
+        <div class="card my-2 border-0">
+            <form action="/breathholds/<%= breathhold._id %>?_method=DELETE" method="POST">
+                <div class="d-grid gap-2 pb-3">
+                    <button class="btn btn-danger btn-sm">DELETE THIS HOLD</button>
+                </div>
+            </form>
+        </div>
+    </div>

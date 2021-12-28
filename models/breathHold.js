@@ -7,7 +7,15 @@ const BreathHoldSchema = new Schema({
     type: String,
     orifice: String,
     position: String,
-    underInfluence: String,
+    underInfluence: {
+        type: String, 
+        default: 'no',
+    },
+    createdAt: {
+        type: Date, 
+        default: Date.now,
+        required: true,
+    }
 });
 
 module.exports = mongoose.model('Breathhold', BreathHoldSchema);

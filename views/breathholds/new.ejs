@@ -1,42 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Breath Hold</title>
-</head>
-<body>
-    <h1>New Breath Hold</h1>
-    <div>
+<% layout('layouts/boilerplate') %> 
+<div class="row">
+    <h4 class="text-center">NEW BREATH HOLD</h4>
+    <div class="col-md-6 offset-md-3">
         <form action="/breathholds" method="POST">
-            <div>
-                <label for="name">Name: <br></label>
-                <input type="text" id="name" name="breathhold[name]">
+            <div class="mb-1">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="breathhold[name]"/>
             </div>
-            <div>
-                <label for="duration">Duration (seconds): <br></label>
-                <input type="text" id="duration" name="breathhold[duration]">
+            <div class="mb-1">
+                <label class="form-label" for="duration">Duration</label>
+                <input class="form-control" type="text" id="duration" name="breathhold[duration]"/>
+                <div id="nameHelp" class="form-text text-muted" style="font-size: .7rem;">seconds</div>
             </div>
-            <div>
-                <label for="type">Pre-hold Breath Type (inhale/exhale): <br></label>
-                <input type="text" id="type" name="breathhold[type]"> 
+            <div class="mb-1">
+                <label class="form-label" for="type">Breath Type</label>
+                <input class="form-control" type="text" id="type" name="breathhold[type]"/>
+                <div id="breathHelp" class="form-text text-muted" style="font-size: .7rem;">inhale | exhale</div>
             </div>
-            <div>
-                <label for="orifice">Orifice: <br></label>
-                <input type="text" id="orifice" name="breathhold[orifice]"> 
+            <div class="mb-1">
+                <label class="form-label" for="orifice">Orifice</label>
+                <input class="form-control" type="text" id="orifice" name="breathhold[orifice]"/>
+                <div id="orificeHelp" class="form-text text-muted" style="font-size: .7rem;">nose | mouth</div>
             </div>
-            <div>
-                <label for="position">Position: (seated/lying down/etc.) <br></label>
-                <input type="text" id="position" name="breathhold[position]"> 
+            <div class="mb-1">
+                <label class="form-label" for="position">Position</label>
+                <input class="form-control" type="text" id="position" name="breathhold[position]"/>
+                <div id="positionHelp" class="form-text text-muted" style="font-size: .7rem;">seated | lying | reclined | etc</div>
             </div>
-            <div>
-                <label for="underInfluence">Under the Infleuence (yes/no): <br></label>
-                <input type="text" id="underInfluence" name="breathhold[underInfluence]"> 
-            </div><br>
-            <button>Add Hold</button>
+            <div class="mb-1">
+                <label class="form-label" for="underInfluence">Under the Influence</label>
+                <input class="form-control" type="text" id="underInfluence" name="breathhold[underInfluence]"/>
+                <div id="underInfluenceHelp" class="form-text text-muted" style="font-size: .7rem;">yes | no</div>
+            </div>
+            <div class="d-grid gap-2 pb-3 mt-3">
+                <button class="btn btn-primary">SUBMIT HOLD</button>
+            </div>
         </form>
-    </div><br>
-    <a href="/breathholds">View All Holds</a>
-</body>
-</html>
+    </div>
+</div>

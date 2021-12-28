@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breath Holds Index</title>
-</head>
-<body>
-    <h1>All Breath Holds</h1>
-    <a href="/breathholds/new">Log New Hold</a>
-    <ul>
+<% layout('layouts/boilerplate') %> 
+<div class="col-md-6 offset-md-3">
+    <div class="card border-0">
+        <h1 class="card-title text-center">ALL BREATH HOLDS</h1>
+    </div>
+    <div class="card mx-1 my-2 border-0">
+        <a href="/breathholds/new" role="button" class="btn btn-primary btn-sm">LOG NEW HOLD</a>
+    </div>
         <% for (let breathhold of breathholds) { %> 
-            <li><%= breathhold.name %> - <%= breathhold.duration %> sec - <a href="/breathholds/<%= breathhold._id %> " style="font-size: .9rem">Details</a></li>
+            <div class="card mx-1 my-2">
+                <div class="card-body p-2">
+                  <h6 class="card-title mb-1"><%= breathhold.name %> - <%= breathhold.duration %>s</h6>
+                  <p class="card-text text-muted mb-0" style="font-size: .8rem;"><%= breathhold.createdAt.toLocaleString('en-US')%></p>
+                  <a href="/breathholds/<%= breathhold._id%>" style="font-size: .8rem">MORE DETAILS</a>
+                </div>
+            </div>
         <% } %> 
-    </ul>
-</body>
-</html>
+    </div>
+</div>
