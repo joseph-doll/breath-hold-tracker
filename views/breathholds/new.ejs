@@ -2,34 +2,35 @@
 <div class="row">
     <h4 class="text-center">NEW BREATH HOLD</h4>
     <div class="col-md-6 offset-md-3">
-        <form action="/breathholds" method="POST">
+        <form action="/breathholds" method="POST" class="validated-form" novalidate>
             <div class="mb-1">
-                <label class="form-label" for="name">Name</label>
-                <input class="form-control" type="text" id="name" name="breathhold[name]"/>
+                <label class="form-label mb-0 mt-1" for="name" >Name</label>
+                <input class="form-control" type="text" id="name" name="breathhold[name]" required/>
             </div>
             <div class="mb-1">
-                <label class="form-label" for="duration">Duration</label>
-                <input class="form-control" type="text" id="duration" name="breathhold[duration]"/>
-                <div id="nameHelp" class="form-text text-muted" style="font-size: .7rem;">seconds</div>
+                <label class="form-label mb-0 mt-1" for="duration">Duration</label>
+                <input class="form-control" type="text" id="duration" name="breathhold[duration]" required/>
+                <div id="nameHelp" class="form-text text-muted" style="font-size: .7rem; display: inline">seconds </div>
+                
             </div>
             <div class="mb-1">
-                <label class="form-label" for="type">Breath Type</label>
-                <input class="form-control" type="text" id="type" name="breathhold[type]"/>
+                <label class="form-label mb-0 mt-1" for="type">Breath Type</label>
+                <input class="form-control" type="text" id="type" name="breathhold[type]" required/>
                 <div id="breathHelp" class="form-text text-muted" style="font-size: .7rem;">inhale | exhale</div>
             </div>
             <div class="mb-1">
-                <label class="form-label" for="orifice">Orifice</label>
-                <input class="form-control" type="text" id="orifice" name="breathhold[orifice]"/>
+                <label class="form-label mb-0 mt-1" for="orifice">Orifice</label>
+                <input class="form-control" type="text" id="orifice" name="breathhold[orifice]" required/>
                 <div id="orificeHelp" class="form-text text-muted" style="font-size: .7rem;">nose | mouth</div>
             </div>
             <div class="mb-1">
-                <label class="form-label" for="position">Position</label>
-                <input class="form-control" type="text" id="position" name="breathhold[position]"/>
+                <label class="form-label mb-0 mt-1" for="position">Position</label>
+                <input class="form-control" type="text" id="position" name="breathhold[position]" required/>
                 <div id="positionHelp" class="form-text text-muted" style="font-size: .7rem;">seated | lying | reclined | etc</div>
             </div>
             <div class="mb-1">
-                <label class="form-label" for="underInfluence">Under the Influence</label>
-                <input class="form-control" type="text" id="underInfluence" name="breathhold[underInfluence]"/>
+                <label class="form-label mb-0 mt-1" for="underInfluence">Under the Influence</label>
+                <input class="form-control" type="text" id="underInfluence" name="breathhold[underInfluence]" required/>
                 <div id="underInfluenceHelp" class="form-text text-muted" style="font-size: .7rem;">yes | no</div>
             </div>
             <div class="d-grid gap-2 pb-3 mt-3">
