@@ -4,6 +4,7 @@ const BreathHold = require('../models/breathHold');
 const catchAsync = require('../utils/catchAsync');
 const ExpressError = require('../utils/ExpressError');
 const { breathholdSchema } = require('../schemas.js');
+const { isLoggedIn } = require('../middleware');
 
 const validateBreathhold = (req, res, next) => {
     const { error } = breathholdSchema.validate(req.body);
@@ -20,11 +21,11 @@ router.get('/', async(req, res) => {
     res.render('breathholds/index', { breathholds });
 });
 
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
     res.render('breathholds/new');
 });
 
-router.post('/', validateBreathhold, catchAsync(async (req, res, next) => {
+router.post('/', isLoggedIn, validateBreathhold, catchAsync(async (req, res, next) => {
     const breathhold = new BreathHold(req.body.breathhold);
     await breathhold.save();
     req.flash('success', 'Successfully created a new hold.');
@@ -40,12 +41,12 @@ router.get('/:id', catchAsync(async (req, res) => {
     res.render('breathholds/show', { breathhold });
 }));
 
-router.get('/:id/edit', catchAsync(async (req, res) => {
+router.get('/:id/edit', isLoggedIn, catchAsync(async (req, res) => {
     const breathhold = await BreathHold.findById(req.params.id);
     res.render('breathholds/edit', { breathhold });
 }));
 
-router.put('/:id', validateBreathhold, catchAsync(async (req, res) => {
+router.put('/:id', isLoggedIn, validateBreathhold, catchAsync(async (req, res) => {
     const { id } = req.params;
     const breathhold = await BreathHold.findByIdAndUpdate(id, {
         ...req.body.breathhold,
@@ -55,7 +56,7 @@ router.put('/:id', validateBreathhold, catchAsync(async (req, res) => {
     res.redirect(`/breathholds/${breathhold._id}`);
 }));
 
-router.delete('/:id', catchAsync(async (req, res) => {
+router.delete('/:id', isLoggedIn, catchAsync(async (req, res) => {
     const { id } = req.params;
     await BreathHold.findByIdAndDelete(id);
     req.flash('success', 'Successfully deleted hold.');
