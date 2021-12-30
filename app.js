@@ -2,11 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const methodOverride = require('method-override');
-const BreathHold = require('./models/breathHold');
 const ejsMate = require('ejs-mate');
-const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const { breathholdSchema } = require('./schemas.js');
+const breathholds = require('./routes/breathholds');
 
 mongoose.connect('mongodb://127.0.0.1:27017/breath-hold-tracker', {
     useNewUrlParser: true,
@@ -44,49 +43,11 @@ const validateBreathhold = (req, res, next) => {
     }
 }
 
+app.use('/breathholds', breathholds);
+
 app.get('/', (req, res) => {
     res.render('home');
 });
-
-app.get('/breathholds', async(req, res) => {
-    const breathholds = await BreathHold.find({});
-    res.render('breathholds/index', { breathholds });
-});
-
-app.get('/breathholds/new', (req, res) => {
-    res.render('breathholds/new');
-});
-
-app.post('/breathholds', validateBreathhold, catchAsync(async (req, res, next) => {
-    const breathhold = new BreathHold(req.body.breathhold);
-    await breathhold.save();
-    res.redirect(`breathholds/${breathhold._id}`);
-}));
-
-app.get('/breathholds/:id', catchAsync(async (req, res) => {
-    const breathhold = await BreathHold.findById(req.params.id);
-    res.render('breathholds/show', { breathhold });
-}));
-
-app.get('/breathholds/:id/edit', catchAsync(async (req, res) => {
-    const breathhold = await BreathHold.findById(req.params.id);
-    res.render('breathholds/edit', { breathhold });
-}));
-
-app.put('/breathholds/:id', validateBreathhold, catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const breathhold = await BreathHold.findByIdAndUpdate(id, {
-        ...req.body.breathhold,
-    });
-    await breathhold.save();
-    res.redirect(`/breathholds/${breathhold._id}`);
-}));
-
-app.delete('/breathholds/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    await BreathHold.findByIdAndDelete(id);
-    res.redirect('/breathholds');
-}));
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404));
