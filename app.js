@@ -4,7 +4,6 @@ const path = require('path');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError');
-const { breathholdSchema } = require('./schemas.js');
 const breathholds = require('./routes/breathholds');
 
 mongoose.connect('mongodb://127.0.0.1:27017/breath-hold-tracker', {
@@ -31,17 +30,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-
-
-const validateBreathhold = (req, res, next) => {
-    const { error } = breathholdSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next();
-    }
-}
 
 app.use('/breathholds', breathholds);
 
