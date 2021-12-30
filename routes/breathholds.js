@@ -27,11 +27,16 @@ router.get('/new', (req, res) => {
 router.post('/', validateBreathhold, catchAsync(async (req, res, next) => {
     const breathhold = new BreathHold(req.body.breathhold);
     await breathhold.save();
+    req.flash('success', 'Successfully created a new hold.');
     res.redirect(`breathholds/${breathhold._id}`);
 }));
 
 router.get('/:id', catchAsync(async (req, res) => {
     const breathhold = await BreathHold.findById(req.params.id);
+    if(!breathhold){
+        req.flash('error', 'Cannot find that breathhold.');
+        return res.redirect('/breathholds');
+    } 
     res.render('breathholds/show', { breathhold });
 }));
 
@@ -46,12 +51,14 @@ router.put('/:id', validateBreathhold, catchAsync(async (req, res) => {
         ...req.body.breathhold,
     });
     await breathhold.save();
+    req.flash('success', 'Successfully modified hold.');
     res.redirect(`/breathholds/${breathhold._id}`);
 }));
 
 router.delete('/:id', catchAsync(async (req, res) => {
     const { id } = req.params;
     await BreathHold.findByIdAndDelete(id);
+    req.flash('success', 'Successfully deleted hold.');
     res.redirect('/breathholds');
 }));
 
