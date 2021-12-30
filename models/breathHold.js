@@ -11,36 +11,11 @@ const BreathHoldSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-    }
-    // name: {
-    //     type: String,
-    //     required: true,
-    // },
-    // duration: {
-    //     type: Number,
-    //     required: true,
-    // },
-    // type: {
-    //     type: String,
-    //     required: true,
-    // },
-    // orifice: {
-    //     type: String,
-    //     required: true,
-    // },
-    // position: {
-    //     type: String,
-    //     required: true,
-    // },
-    // underInfluence: {
-    //     type: String, 
-    //     default: 'no',
-    // },
-    // createdAt: {
-    //     type: Date, 
-    //     default: Date.now,
-    //     required: true,
-    // },
+    },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
 });
 
 module.exports = mongoose.model('Breathhold', BreathHoldSchema);

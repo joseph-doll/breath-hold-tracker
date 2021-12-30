@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const catchAsync = require('../utils/catchAsync');
-const ExpressError = require('../utils/ExpressError');
 const passport = require('passport');
 
 router.get('/register', (req, res) => {
@@ -11,12 +10,12 @@ router.get('/register', (req, res) => {
 
 router.post('/register', catchAsync(async (req, res, next) => {
     try {
-        const { email, username, password } = req.body;
-        const user = new User({ email, username });
+        const { email, username, password, name } = req.body;
+        const user = new User({ email, username, name });
         const registeredUser = await User.register(user, password);
         req.login(registeredUser, err => {
             if(err) return next(err);
-            req.flash('success', `Welcome to Breath Hold Tracker ${req.body.username}!`);
+            req.flash('success', `Welcome to Breath Hold Tracker ${req.body.name}!`);
             res.redirect('/breathholds');
         });
     } catch(e) {
@@ -30,16 +29,17 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login'}), (req, res) => {
-    req.flash('success', `Good luck with your holds ${req.body.username}!`);
+    const { name } = req.user;
+    req.flash('success', `Good luck with your holds ${ name }!`);
     const redirectUrl = req.session.returnTo || '/breathholds';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
 });
 
 router.get('/logout', (req, res) => {
-    const { username } = req.user;
+    const { name } = req.user;
     req.logout();
-    req.flash('success', `See ya next time ${username}!`);
+    req.flash('success', `See ya next time ${name}!`);
     res.redirect('/breathholds');
 });
 
