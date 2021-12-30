@@ -6,6 +6,7 @@ const BreathHold = require('./models/breathHold');
 const ejsMate = require('ejs-mate');
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
+const { breathholdSchema } = require('./schemas.js');
 
 mongoose.connect('mongodb://127.0.0.1:27017/breath-hold-tracker', {
     useNewUrlParser: true,
@@ -33,6 +34,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 
+const validateBreathhold = (req, res, next) => {
+    const { error } = breathholdSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
 app.get('/', (req, res) => {
     res.render('home');
 });
@@ -46,7 +57,7 @@ app.get('/breathholds/new', (req, res) => {
     res.render('breathholds/new');
 });
 
-app.post('/breathholds', catchAsync(async (req, res, next) => {
+app.post('/breathholds', validateBreathhold, catchAsync(async (req, res, next) => {
     const breathhold = new BreathHold(req.body.breathhold);
     await breathhold.save();
     res.redirect(`breathholds/${breathhold._id}`);
@@ -62,7 +73,7 @@ app.get('/breathholds/:id/edit', catchAsync(async (req, res) => {
     res.render('breathholds/edit', { breathhold });
 }));
 
-app.put('/breathholds/:id', catchAsync(async (req, res) => {
+app.put('/breathholds/:id', validateBreathhold, catchAsync(async (req, res) => {
     const { id } = req.params;
     const breathhold = await BreathHold.findByIdAndUpdate(id, {
         ...req.body.breathhold,
