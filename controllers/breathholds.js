@@ -14,7 +14,6 @@ module.exports.createBreathhold = async (req, res, next) => {
     const breathhold = new BreathHold(req.body.breathhold);
     breathhold.author = req.user._id;
     await breathhold.save();
-    console.log(breathhold.duration);
     if(breathhold.duration === 69) {
         req.flash('success', 'Nice ;)'); //easter egg
         res.redirect(`breathholds/${breathhold._id}`);
