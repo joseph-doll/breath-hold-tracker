@@ -18,7 +18,7 @@ const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/breath-hold-tracker';
-const MongoDBStore = require('connect-mongo');
+const MongoStore = require('connect-mongo')(session);
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -28,7 +28,9 @@ mongoose.connect(dbUrl, {
 });
 
 const db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'connection error:'));
+
 db.once('open', () => {
     console.log('Database connected');
 });
@@ -46,12 +48,10 @@ app.use(mongoSanitize({ replaceWith: '_'}));
 
 const secret = process.env.SECRET || 'flapjacksforfrank'
 
-const store = MongoDBStore.create({
-    mongoUrl: dbUrl,
+const store = new MongoStore({
+    url: dbUrl,
+    secret,
     touchAfter: 24 * 60 * 60,
-    crypto: {
-        secret: secret,
-    }
 });
 
 store.on('error', function(e) {
