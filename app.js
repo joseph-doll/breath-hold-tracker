@@ -20,7 +20,7 @@ const helmet = require('helmet');
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/breath-hold-tracker';
 const MongoStore = require('connect-mongo')(session);
 
-mongoose.connect('mongodb://127.0.0.1:27017/breath-hold-tracker', {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -141,7 +141,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 });
 
-// const port = process.env.PORT || 3000
-app.listen(3000, () => {
-    console.log(`Serving on port ${3000}`);
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+    console.log(`Serving on port ${port}`);
 });
