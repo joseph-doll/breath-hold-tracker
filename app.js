@@ -17,10 +17,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
-const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/breath-hold-tracker';
+const MongoDBStore = require('connect-mongo');
 
-
-// 'mongodb://127.0.0.1:27017/breath-hold-tracker'
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -37,7 +36,7 @@ db.once('open', () => {
 
 const app = express();
 
-app.engine('ejs', ejsMate); //use ejs-locals for all ejs templates
+app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -45,9 +44,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(mongoSanitize({ replaceWith: '_'}));
 
+const secret = process.env.SECRET || 'flapjacksforfrank'
+
+const store = MongoDBStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: secret,
+    }
+});
+
+store.on('error', function(e) {
+    console.log('session store error', e);
+});
+
 const sessionConfig = {
-    name: 'session',
-    secret: 'thisshouldbeabettersecret!',
+    store,
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
