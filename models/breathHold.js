@@ -10,7 +10,7 @@ const BreathHoldSchema = new Schema({
     underInfluence: String,
     createdAt: {
         type: Date,
-        default: Date.now,
+        default: new Date(),
     },
     author: {
         type: Schema.Types.ObjectId,
