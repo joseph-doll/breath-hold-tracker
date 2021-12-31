@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -12,8 +16,12 @@ const User = require('./models/user');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
+const dbUrl = process.env.DB_URL;
 
-mongoose.connect('mongodb://127.0.0.1:27017/breath-hold-tracker', {
+
+// 'mongodb://127.0.0.1:27017/breath-hold-tracker'
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -38,11 +46,13 @@ app.use(methodOverride('_method'));
 app.use(mongoSanitize({ replaceWith: '_'}));
 
 const sessionConfig = {
+    name: 'session',
     secret: 'thisshouldbeabettersecret!',
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
+        //secure: true,
         expires: Date.now() + 1000 + 60 * 60 * 60 * 24 * 7,
         maxAge: 1000 + 60 * 60 * 60 * 24 * 7,
         
@@ -63,6 +73,43 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 })
+app.use(helmet());
+
+//helmet stuff
+const scriptSrcUrls = [
+    "https://stackpath.bootstrapcdn.com/",
+    "https://kit.fontawesome.com/",
+    "https://cdnjs.cloudflare.com/",
+    "https://cdn.jsdelivr.net",
+];
+const styleSrcUrls = [
+    "https://kit-free.fontawesome.com/",
+    "https://stackpath.bootstrapcdn.com/",
+    "https://fonts.googleapis.com/",
+    "https://use.fontawesome.com/",
+    "https://cdn.jsdelivr.net",
+];
+const connectSrcUrls = [];
+const fontSrcUrls = [];
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: [],
+            connectSrc: ["'self'", ...connectSrcUrls],
+            scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+            workerSrc: ["'self'", "blob:"],
+            objectSrc: [],
+            imgSrc: [
+                "'self'",
+                "blob:",
+                "data:",
+                "https://images.unsplash.com/",
+            ],
+            fontSrc: ["'self'", ...fontSrcUrls],
+        },
+    })
+);
 
 app.use('/', userRoutes);
 app.use('/breathholds', breathholdRoutes);
