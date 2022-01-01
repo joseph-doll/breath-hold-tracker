@@ -49,7 +49,7 @@ function timer() {
     // document.getElementById('hour').innerText = returnData(hour);
     document.getElementById('minute').innerText = returnData(minute);
     document.getElementById('second').innerText = returnData(second);
-    document.getElementById('millisecond').innerText = returnData(millisecond);
+    document.getElementById('millisecond').innerText = returnMsData(millisecond);
 };
 
 //makes the display more dynamic by adding a 0 before any digit less than 10
