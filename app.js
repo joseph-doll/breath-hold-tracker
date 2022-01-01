@@ -12,15 +12,17 @@ const flash = require('connect-flash');
 const ExpressError = require('./utils/ExpressError');
 const breathholdRoutes = require('./routes/breathholds');
 const userRoutes = require('./routes/users');
+const timerRoutes = require('./routes/timer')
 const User = require('./models/user');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
-const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/breath-hold-tracker';
+const dbUrl = process.env.DB_URL;
+const localDb = 'mongodb://127.0.0.1:27017/breath-hold-tracker';
 const MongoStore = require('connect-mongo')(session);
 
-mongoose.connect(dbUrl, {
+mongoose.connect(localDb, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -49,7 +51,7 @@ app.use(mongoSanitize({ replaceWith: '_'}));
 const secret = process.env.SECRET || 'flapjacksforfrank'
 
 const store = new MongoStore({
-    url: dbUrl,
+    url: localDb,
     secret,
     touchAfter: 24 * 60 * 60,
 });
@@ -126,7 +128,7 @@ app.use(
 
 app.use('/', userRoutes);
 app.use('/breathholds', breathholdRoutes);
-
+app.use('/timer', timerRoutes);
 app.get('/', (req, res) => {
     res.render('home');
 });
@@ -141,7 +143,8 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 });
 
-const port = process.env.PORT || 3000
-app.listen(port, () => {
-    console.log(`Serving on port ${port}`);
+const port = process.env.PORT;
+const localPort = 3000;
+app.listen(localPort, () => {
+    console.log(`Serving on port ${localPort}`);
 });
