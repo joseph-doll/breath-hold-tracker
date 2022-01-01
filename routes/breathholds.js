@@ -8,6 +8,8 @@ router.route('/')
     .get(catchAsync(breathholds.index))
     .post(isLoggedIn, validateBreathhold, catchAsync(breathholds.createBreathhold));
 
+router.get('/timer', isLoggedIn, breathholds.timer);
+
 router.get('/new', isLoggedIn, breathholds.renderNewForm);
 
 router.route('/:id')

@@ -5,6 +5,10 @@ module.exports.index = async(req, res) => {
     res.render('breathholds/index', { breathholds });
 };
 
+module.exports.timer = (req, res) => {  
+    res.render('breathholds/timer');
+};
+
 module.exports.renderNewForm = (req, res) => {
     const { name } = req.user;
     res.render('breathholds/new', { name: name });

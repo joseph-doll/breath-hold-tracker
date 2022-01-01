@@ -12,7 +12,6 @@ const flash = require('connect-flash');
 const ExpressError = require('./utils/ExpressError');
 const breathholdRoutes = require('./routes/breathholds');
 const userRoutes = require('./routes/users');
-const timerRoutes = require('./routes/timer')
 const User = require('./models/user');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -128,7 +127,6 @@ app.use(
 
 app.use('/', userRoutes);
 app.use('/breathholds', breathholdRoutes);
-app.use('/timer', timerRoutes);
 app.get('/', (req, res) => {
     res.render('home');
 });

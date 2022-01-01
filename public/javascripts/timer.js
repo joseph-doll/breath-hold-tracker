@@ -7,9 +7,9 @@ let millisecond = 0;
 
 let time;
 
-document.form_main.start.onclick = () => start();
-document.form_main.stop.onclick = () => stop();
-document.form_main.reset.onclick = () => reset();
+document.getElementById('start').onclick = () => start();
+document.getElementById('stop').onclick = () => stop();
+document.getElementById('reset').onclick = () => reset();
 // document.form_main.stop.onclick = () => stop();
 
 function start() {

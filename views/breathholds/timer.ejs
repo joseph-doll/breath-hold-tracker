@@ -15,15 +15,15 @@
             <span id="second">00</span><span class="timer-text">sec</span><br>
             <span id="millisecond">000</span><span class="timer-text">ms</span>
         </div>
-            <form name="form_main">
-                <div class="card border-0 bg-black fixed-bottom">
-                    <button type="button" name="start" class="btn btn-success btn-sm border-0 p-2 rounded-0">Start</button>
-                    <button type="button" name="stop" class="btn btn-danger btn-sm border-0 mt-2 p-2 rounded-0">Stop</button>
-                    <button type="button" name="reset" class="btn btn-secondary btn-sm border-0 mt-2 p-2 rounded-0">Reset</button>
-                    <span class="this-hold mt-3"><i>**Note: Record hold, avg of last 5, and more, to be displayed in the future</i></span>
-                    <button type="button" class="btn btn-large btn-primary py-4 mt-3 rounded-0">Log This Hold</button>
-                </div>
-            </form>
+        <div name="form_main">
+            <div class="card border-0 bg-black fixed-bottom">
+                <button type="button" id="start" name="start" class="btn btn-success btn-sm border-0 p-2 rounded-0">Start</button>
+                <button type="button" id="stop" name="stop" class="btn btn-danger btn-sm border-0 mt-2 p-2 rounded-0">Stop</button>
+                <button type="button" id="reset" name="reset" class="btn btn-secondary btn-sm border-0 mt-2 p-2 rounded-0">Reset</button>
+                <span class="this-hold mt-3"><i>**Note: Record hold, avg of last 5, and more, to be displayed in the future</i></span>
+                <a href="/breathholds/new" role="button" type="button" class="btn btn-large btn-primary py-4 mt-3 rounded-0">Log This Hold</a>
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="/javascripts/validateForms.js"></script>
