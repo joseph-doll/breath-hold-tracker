@@ -18,10 +18,10 @@ const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const dbUrl = process.env.DB_URL;
-const localDb = 'mongodb://127.0.0.1:27017/breath-hold-tracker';
+// const localDb = 'mongodb://127.0.0.1:27017/breath-hold-tracker';
 const MongoStore = require('connect-mongo')(session);
 
-mongoose.connect(localDb, {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -50,7 +50,7 @@ app.use(mongoSanitize({ replaceWith: '_'}));
 const secret = process.env.SECRET || 'flapjacksforfrank'
 
 const store = new MongoStore({
-    url: localDb,
+    url: dbUrl,
     secret,
     touchAfter: 24 * 60 * 60,
 });
@@ -142,7 +142,7 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT;
-const localPort = 3000;
-app.listen(localPort, () => {
-    console.log(`Serving on port ${localPort}`);
+// const localPort = 3000;
+app.listen(port, () => {
+    console.log(`Serving on port ${port}`);
 });
