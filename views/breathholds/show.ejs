@@ -1,27 +1,25 @@
 <% layout('layouts/boilerplate') %> 
-    <div class="col-md-6 offset-md-3">
-        <h4 class="text-center">BREATH HOLD</h4>
-        <div class="card mb-3">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Name: <%= breathhold.name %> </li>
-              <li class="list-group-item">Duration: <%= breathhold.duration %> seconds </li>
-              <li class="list-group-item">Breath Type: <%= breathhold.type %> </li>
-              <li class="list-group-item">Orifice: <%= breathhold.orifice %></li>
-              <li class="list-group-item">Position: <%= breathhold.position %> </li>
-              <li class="list-group-item">Under the Influence: <%= breathhold.underInfluence %> </li>
-              <li class="list-group-item">Created: <%= breathhold.createdAt.toLocaleString('en-US') %> </li>
-            </ul>
-        </div>
-
-
-        <% if (currentUser && breathhold.author.equals(currentUser._id)) {%>
-        <div class="card border-0 mb-3 pb-3">
-            <a href="/breathholds/<%= breathhold._id %>/edit" role="button" class="btn btn-primary btn-sm">EDIT THIS HOLD</a>
-            <form action="/breathholds/<%= breathhold._id %>?_method=DELETE" method="POST">
-                <div class="d-grid gap-2 pb-3">
-                    <button class="btn btn-danger btn-sm mt-2">DELETE THIS HOLD</button>
-                </div>
-            </form>
-        </div>
-        <% } %> 
-    </div>
+        <div class="container-fluid mt-2">
+            <h4 class="text-center mb-3">HOLD DETAILS</h4>
+            <div class="mb-4">
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-dark text-light border-secondary">Name: <%= breathhold.name %> </li>
+                <li class="list-group-item bg-dark text-light border-secondary">Duration: <%= breathhold.duration %> seconds </li>
+                <li class="list-group-item bg-dark text-light border-secondary">Breath Type: <%= breathhold.type %> </li>
+                <li class="list-group-item bg-dark text-light border-secondary">Orifice: <%= breathhold.orifice %></li>
+                <li class="list-group-item bg-dark text-light border-secondary">Position: <%= breathhold.position %> </li>
+                <li class="list-group-item bg-dark text-light border-secondary">Under the Influence: <%= breathhold.underInfluence %> </li>
+                <li class="list-group-item bg-dark text-light border-secondary">Created: <%= breathhold.createdAt.toLocaleString('en-US') %> </li>
+                </ul>
+            </div>
+            <% if (currentUser && breathhold.author.equals(currentUser._id)) {%>
+            <div class="card border-0 mb-3 pb-3 bg-dark">
+                <a href="/breathholds/<%= breathhold._id %>/edit" role="button" class="btn btn-primary btn-sm">EDIT THIS HOLD</a>
+                <form action="/breathholds/<%= breathhold._id %>?_method=DELETE" method="POST">
+                    <div class="d-grid gap-2 pb-3">
+                        <button class="btn btn-danger btn-sm mt-2">DELETE THIS HOLD</button>
+                    </div>
+                </form>
+            </div>
+            <% } %>
+        </div>  

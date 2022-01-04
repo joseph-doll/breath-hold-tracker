@@ -1,7 +1,7 @@
 const BreathHold = require('../models/breathHold');
 
 module.exports.index = async(req, res) => {
-    const breathholds = await BreathHold.find({});
+    const breathholds = await BreathHold.find({}).sort({ createdAt: -1 });
     res.render('breathholds/index', { breathholds });
 };
 

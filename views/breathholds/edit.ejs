@@ -1,46 +1,44 @@
 <% layout('layouts/boilerplate') %>
-<div class="col-md-6 offset-md-3">
-    <div class="row">
-        <h4 class="text-center">EDIT BREATH HOLD</h4>
-            <form action="/breathholds/<%= breathhold._id %>?_method=PUT" method="POST" class="validated-form" novalidate>
-                <div class="mb-1">
-                    <label class="form-label mb-0 mt-1" for="name">Name</label>
-                    <input class="form-control" type="text" id="name" name="breathhold[name]" value="<%= breathhold.name %>" required/>
-                </div>
-                <div class="mb-1">
-                    <label class="form-label mb-0 mt-1" for="duration">Duration</label>
-                    <input class="form-control" type="text" id="duration" name="breathhold[duration]" value="<%= breathhold.duration %>" required/>
-                    <div id="nameHelp" class="form-text text-muted" style="font-size: .7rem;">seconds</div>
-                </div>
-                <div class="mb-1">
-                    <label class="form-label mb-0 mt-1" for="type">Breath Type</label>
-                    <input class="form-control" type="text" id="type" name="breathhold[type]" value="<%= breathhold.type%>" required/>
-                    <div id="breathHelp" class="form-text text-muted" style="font-size: .7rem;">inhale | exhale</div>
-                </div>
-                <div class="mb-1">
-                    <label class="form-label mb-0 mt-1" for="orifice">Orifice</label>
-                    <input class="form-control" type="text" id="orifice" name="breathhold[orifice]" value="<%= breathhold.orifice %>" required/>
-                    <div id="orificeHelp" class="form-text text-muted" style="font-size: .7rem;">nose | mouth</div>
-                </div>
-                <div class="mb-1">
-                    <label class="form-label mb-0 mt-1" for="position">Position</label>
-                    <input class="form-control" type="text" id="position" name="breathhold[position]" value="<%= breathhold.position %>" required/>
-                    <div id="positionHelp" class="form-text text-muted" style="font-size: .7rem;">seated | lying | reclined | etc</div>
-                </div>
-                <div class="mb-1">
-                    <label class="form-label mb-0 mt-1" for="underInfluence">Under the Influence</label>
-                    <input class="form-control" type="text" id="underInfluence" name="breathhold[underInfluence]" value="<%= breathhold.underInfluence %>" required/>
-                    <div id="underInfluenceHelp" class="form-text text-muted" style="font-size: .7rem;">yes | no</div>
-                </div>
-                <div class="d-grid gap-2 pb-3">
-                    <button class="btn btn-danger mt-2">SUBMIT CHANGES</button>
-                </div>
-                <!-- <div class="d-grid gap-2 pb-3">
-                    <button class="btn btn-danger mt-2">CANCEL</button>
-                </div> -->
-            </form>
-        <div class="card border-0 mb-3">
-            <a href="/breathholds/<%= breathhold._id %>" role="button" class="btn btn-secondary btn-sm">CANCEL</a>
-        </div>
-    </div>        
+<div class="container-fluid">
+    <h4 class="text-center mt-2">EDIT HOLD DETAILS</h4>
+        <form action="/breathholds/<%= breathhold._id %>?_method=PUT" method="POST" class="validated-form" novalidate>
+            <div class="mb-1">
+                <label class="form-label mb-0 mt-1" for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="breathhold[name]" value="<%= breathhold.name %>" required/>
+            </div>
+            <div class="mb-1">
+                <label class="form-label mb-0 mt-1" for="duration">Duration</label>
+                <input class="form-control" type="text" id="duration" name="breathhold[duration]" value="<%= breathhold.duration %>" required/>
+                <div id="nameHelp" class="form-text text-muted" style="font-size: .7rem;">seconds</div>
+            </div>
+            <div class="mb-1">
+                <label class="form-label mb-0 mt-1" for="type">Breath Type</label>
+                <input class="form-control" type="text" id="type" name="breathhold[type]" value="<%= breathhold.type%>" required/>
+                <div id="breathHelp" class="form-text text-muted" style="font-size: .7rem;">inhale | exhale</div>
+            </div>
+            <div class="mb-1">
+                <label class="form-label mb-0 mt-1" for="orifice">Orifice</label>
+                <input class="form-control" type="text" id="orifice" name="breathhold[orifice]" value="<%= breathhold.orifice %>" required/>
+                <div id="orificeHelp" class="form-text text-muted" style="font-size: .7rem;">nose | mouth</div>
+            </div>
+            <div class="mb-1">
+                <label class="form-label mb-0 mt-1" for="position">Position</label>
+                <input class="form-control" type="text" id="position" name="breathhold[position]" value="<%= breathhold.position %>" required/>
+                <div id="positionHelp" class="form-text text-muted" style="font-size: .7rem;">seated | lying | reclined | etc</div>
+            </div>
+            <div class="mb-1">
+                <label class="form-label mb-0 mt-1" for="underInfluence">Under the Influence</label>
+                <input class="form-control" type="text" id="underInfluence" name="breathhold[underInfluence]" value="<%= breathhold.underInfluence %>" required/>
+                <div id="underInfluenceHelp" class="form-text text-muted" style="font-size: .7rem;">yes | no</div>
+            </div>
+            <div class="d-grid gap-2 pb-3">
+                <button class="btn btn-danger mt-2">SUBMIT CHANGES</button>
+            </div>
+            <!-- <div class="d-grid gap-2 pb-3">
+                <button class="btn btn-danger mt-2">CANCEL</button>
+            </div> -->
+        </form>
+    <div class="card border-0 mb-3">
+        <a href="/breathholds/<%= breathhold._id %>" role="button" class="btn btn-secondary btn-sm">CANCEL</a>
+    </div>       
 </div>

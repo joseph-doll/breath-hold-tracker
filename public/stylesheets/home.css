@@ -21,8 +21,8 @@ body {
 }
 
 .nav-link:hover {
-    color: #000000;
-    border-bottom-color: #000000;
+    color: #ffffff;
+    border-bottom-color: #ffffff;
 }
 
 .nav-link.active{
