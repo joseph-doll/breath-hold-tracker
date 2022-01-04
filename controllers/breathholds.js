@@ -20,10 +20,10 @@ module.exports.createBreathhold = async (req, res, next) => {
     await breathhold.save();
     if(breathhold.duration === 69) {
         req.flash('success', 'Nice ;)'); //easter egg
-        res.redirect(`breathholds/${breathhold._id}`);
+        res.redirect('breathholds');
     } else {
         req.flash('success', 'Successfully created a new hold.');
-        res.redirect(`breathholds/${breathhold._id}`);
+        res.redirect('/breathholds');
     };
 };
 

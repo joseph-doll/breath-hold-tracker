@@ -1,29 +1,31 @@
 <% layout('layouts/boilerplate') %>
-    <h4 class="text-center">REGISTER</h4>
-    <div class="col-md-6 offset-md-3">
-        <form action="/register" method="POST" class="validated-form" novalidate>
-            <div class="mb-1">
-                <label class="form-label mb-0 mt-1" for="username" >Username</label>
-                <input class="form-control" type="text" id="username" name="username" required/>
-                <div id="usernameHelp" class="form-text text-muted" style="font-size: .7rem; display: inline"> <i>Used for Login Only</i>
+    <div class="container-fluid">
+        <h4 class="text-center">REGISTER</h4>
+        <div class="col-md-6 offset-md-3">
+            <form action="/register" method="POST" class="validated-form" novalidate>
+                <div class="mb-1">
+                    <label class="form-label mb-0 mt-1" for="username" >Username</label>
+                    <input class="form-control" type="text" id="username" name="username" required/>
+                    <div id="usernameHelp" class="form-text text-muted" style="font-size: .7rem; display: inline"> <i>Used for Login Only</i>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-1">
-                <label class="form-label mb-0 mt-1" for="name" >Name</label>
-                <input class="form-control" type="text" id="name" name="name" required/>
-                <div id="nameHelp" class="form-text text-muted" style="font-size: .7rem; display: inline"> <i>First and Last; For Display Purposes</i>
+                <div class="mb-1">
+                    <label class="form-label mb-0 mt-1" for="name" >Name</label>
+                    <input class="form-control" type="text" id="name" name="name" required/>
+                    <div id="nameHelp" class="form-text text-muted" style="font-size: .7rem; display: inline"> <i>First and Last; For Display Purposes</i>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-1">
-                <label class="form-label mb-0 mt-1" for="email" >Email</label>
-                <input class="form-control" type="email" id="email" name="email" required/>
-            </div>
-            <div class="mb-1">
-                <label class="form-label mb-0 mt-1" for="password" >Password</label>
-                <input class="form-control" type="password" id="password" name="password" required/>
-            </div>
-            <div class="d-grid gap-2 pb-3 mt-3">
-                <button class="btn btn-primary">REGISTER</button>
-            </div>
-        </form>
+                <div class="mb-1">
+                    <label class="form-label mb-0 mt-1" for="email" >Email</label>
+                    <input class="form-control" type="email" id="email" name="email" required/>
+                </div>
+                <div class="mb-1">
+                    <label class="form-label mb-0 mt-1" for="password" >Password</label>
+                    <input class="form-control" type="password" id="password" name="password" required/>
+                </div>
+                <div class="d-grid gap-2 pb-3 mt-3">
+                    <button class="btn btn-primary">REGISTER</button>
+                </div>
+            </form>
+        </div>
     </div>

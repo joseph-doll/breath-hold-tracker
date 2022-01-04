@@ -12,9 +12,11 @@
                 <li class="list-group-item bg-dark text-light border-secondary">Created: <%= breathhold.createdAt.toLocaleString('en-US') %> </li>
                 </ul>
             </div>
-            <% if (currentUser && breathhold.author.equals(currentUser._id)) {%>
+            
             <div class="card border-0 mb-3 pb-3 bg-dark">
-                <a href="/breathholds/<%= breathhold._id %>/edit" role="button" class="btn btn-primary btn-sm">EDIT THIS HOLD</a>
+                <a href="/breathholds" role="button" class="btn btn-primary btn-sm mb-2">BACK TO HOLDS</a>
+                <% if (currentUser && breathhold.author.equals(currentUser._id)) {%>
+                <a href="/breathholds/<%= breathhold._id %>/edit" role="button" class="btn btn-success btn-sm">EDIT THIS HOLD</a>
                 <form action="/breathholds/<%= breathhold._id %>?_method=DELETE" method="POST">
                     <div class="d-grid gap-2 pb-3">
                         <button class="btn btn-danger btn-sm mt-2">DELETE THIS HOLD</button>
