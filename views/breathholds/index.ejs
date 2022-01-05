@@ -1,12 +1,12 @@
 <% layout('layouts/boilerplate') %> 
-    <div class="container-fluid bg-dark">
+    <div class="container-fluid bg-black">
         <div class="col-md-6 offset-md-3">
             <div class="card mx-1 my-2 border-0 bg-dark">
                 <a href="/breathholds/new" role="button" class="btn btn-primary btn-sm mb-1">NEW HOLD</a>
                 <a href="/breathholds/timer" role="button" class="btn btn-info btn-sm mb-1" style="color: white;">TIMER</a>
             </div>
                 <% for (let breathhold of breathholds) { %> 
-                    <div class="card border-0 px-2 bg-dark">
+                    <div class="card border-0 px-2 bg-black">
                         <div class="card-body px-0 py-2 border-bottom border-secondary">
                             <h6 class="card-title mb-1"><%= breathhold.name %> - <%= breathhold.duration %>s</h6>
                             <p class="card-text text-muted mb-0" style="font-size: .8rem;"><%= breathhold.createdAt.toLocaleString('en-US')%></p>
