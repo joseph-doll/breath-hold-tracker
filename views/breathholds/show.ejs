@@ -3,17 +3,18 @@
             <h4 class="text-center mb-3">HOLD DETAILS</h4>
             <div class="mb-4">
                 <ul class="list-group list-group-flush">
-                <li class="list-group-item bg-dark text-light border-secondary">Name: <%= breathhold.name %> </li>
-                <li class="list-group-item bg-dark text-light border-secondary">Duration: <%= breathhold.duration %> seconds </li>
-                <li class="list-group-item bg-dark text-light border-secondary">Breath Type: <%= breathhold.type %> </li>
-                <li class="list-group-item bg-dark text-light border-secondary">Orifice: <%= breathhold.orifice %></li>
-                <li class="list-group-item bg-dark text-light border-secondary">Position: <%= breathhold.position %> </li>
-                <li class="list-group-item bg-dark text-light border-secondary">Under the Influence: <%= breathhold.underInfluence %> </li>
-                <li class="list-group-item bg-dark text-light border-secondary">Created: <%= breathhold.createdAt.toLocaleString('en-US') %> </li>
+                <li class="list-group-item bg-black text-light border-secondary">Name: <%= breathhold.name %> </li>
+                <li class="list-group-item bg-black text-light border-secondary">Duration: <%= breathhold.duration %> seconds </li>
+                <li class="list-group-item bg-black text-light border-secondary">Breath Type: <%= breathhold.type %> </li>
+                <li class="list-group-item bg-black text-light border-secondary">Orifice: <%= breathhold.orifice %></li>
+                <li class="list-group-item bg-black text-light border-secondary">Position: <%= breathhold.position %> </li>
+                <li class="list-group-item bg-black text-light border-secondary">Under the Influence: <%= breathhold.underInfluence %> </li>
+                <li class="list-group-item bg-black text-light border-secondary">Hold Date: <%= breathhold.holdDate %> </li>
+                <li class="list-group-item bg-black text-light border-secondary">Created: <%= breathhold.createdAt.toLocaleString('en-US') %> </li>
                 </ul>
             </div>
             
-            <div class="card border-0 mb-3 pb-3 bg-dark">
+            <div class="card border-0 mb-3 pb-3 bg-black">
                 <a href="/breathholds" role="button" class="btn btn-primary btn-sm mb-2">BACK TO HOLDS</a>
                 <% if (currentUser && breathhold.author.equals(currentUser._id)) {%>
                 <a href="/breathholds/<%= breathhold._id %>/edit" role="button" class="btn btn-success btn-sm">EDIT THIS HOLD</a>

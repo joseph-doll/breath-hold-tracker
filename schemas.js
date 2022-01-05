@@ -31,5 +31,6 @@ module.exports.breathholdSchema = Joi.object({
         orifice: Joi.string().required().escapeHTML(),
         position: Joi.string().required().escapeHTML(),
         underInfluence: Joi.string().required().escapeHTML(),
+        holdDate: Joi.string().escapeHTML(),
     })
 });

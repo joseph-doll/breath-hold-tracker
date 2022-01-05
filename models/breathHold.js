@@ -8,6 +8,7 @@ const BreathHoldSchema = new Schema({
     orifice: String,
     position: String,
     underInfluence: String,
+    holdDate: String,
     createdAt: {
         type: Date,
         default: new Date(),
