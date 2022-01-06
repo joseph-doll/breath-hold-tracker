@@ -1,37 +1,60 @@
-<% layout('layouts/boilerplate') %> 
-    <div class="container-fluid bg-black">
-        <div class="col-md-6 offset-md-3">
-            <div class="card mx-1 my-2 border-0 bg-dark">
-                <a href="/breathholds/new" role="button" class="btn btn-primary btn-sm mb-1">NEW HOLD</a>
-                <a href="/breathholds/timer" role="button" class="btn btn-info btn-sm mb-1" style="color: white;">TIMER</a>
-            </div>
-                <% for (let breathhold of breathholds) { %> 
-                    <div class="card border-0 px-2 bg-black">
-                        <div class="card-body px-0 py-2 border-bottom border-secondary">
-                            <h6 class="card-title mb-1"><%= breathhold.name %> - <%= breathhold.duration %>s</h6>
-                            <p class="card-text text-muted mb-0" style="font-size: .8rem;"><%= breathhold.createdAt.toLocaleString('en-US')%></p>
-                            <a href="/breathholds/<%= breathhold._id%>" style="font-size: .8rem">MORE DETAILS</a>
-                        </div>
-                    </div>
-                <% } %> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,700;1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <title>Holds</title>
+</head>
+<body>
+    <nav class="grid-nav">
+        <div class="nav-box">
+            <a href="/">
+                <img src="/images/flashIcon.svg" width="40px" height="40px">
+            </a>
+        </div>
+        <div class="nav-box">
+            <a href="/breathholds/new">New Hold</a>
+        </div>
+        <div class="nav-box">
+            <a href="/breathholds/timer">Timer</a>
+        </div>
+        <div class="nav-box">
+            <% if(!currentUser) {%>
+                <a href="/login">Login</a>
+                <% } else {%> 
+                <a href="/logout">Logout</a>
+                <% } %>  
+        </div>
+    </nav>
+    <% for (let breathhold of breathholds) {%> 
+    <div class="grid-container">
+        <div class="grid-box name">
+            <p>Joseph Doll </p>
+        </div>
+        <div class="grid-box">
+            <p class="result-text">NEW RECORD!</p>
+        </div>
+        <div class="grid-box">
+            <img src="/images/profileicon.svg" alt="">
+        </div>
+        <div class="grid-box">
+            <p class="comment">Wow, cannot believe I got
+                a new record!</p>
+        </div>
+        <div class="grid-box duration">
+            <p><%= `${breathhold.duration}` %> </p>
+        </div>
+        <div class="grid-box">
+            <img src="/images/uparrow.svg" alt="">
         </div>
     </div>
-                <!-- <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            left top 
-                        </div>
-                        <div class="col">
-                            middle top
-                        </div>
-                        <div class="col">
-                            right top
-                        </div>
-                    </div>
-                    <div class="row" style="height: 6rem">
-                        <div class="col align-self-end">bottom left</div>
-                        <div class="col align-self-end">bottom center left</div>
-                        <div class="col align-self-end">bottom center right</div>
-                        <div class="col align-self-end">bottom right</div>
-                    </div>
-                </div> -->
+    <% } %> 
+    <script src="/javascripts/validateForms.js"></script>
+</body>
+</html>

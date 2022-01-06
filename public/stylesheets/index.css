@@ -1,0 +1,105 @@
+body {
+    background-color: black;
+    color: white;
+
+}
+
+.grid-container {
+    display: grid;
+    gap: 0px;
+    grid-template-rows: auto auto;
+    grid-template-columns: .5fr 2fr 1fr .5fr;
+    grid-template-areas: 
+        'one one two two'
+        'three four five six';
+    border-bottom: 1px solid rgb(53, 53, 53);
+}
+
+.grid-box:nth-child(1) {
+    grid-area: one;
+    padding: .75rem 0 0 .75rem;
+}
+
+.grid-box:nth-child(2) {
+    grid-area: two;
+    justify-self: end;
+    padding: .75rem .75rem 0 0;
+}
+
+.grid-box:nth-child(3) {
+    grid-area: three;
+    place-self: center;
+    padding: .75rem 0 .75rem .75rem;
+}
+
+.grid-box:nth-child(4) {
+    grid-area: four;
+    justify-self: center;
+    align-self: center;
+    padding: 0 .75rem 0 .75rem;
+}
+
+.grid-box:nth-child(5) {
+    grid-area: five;
+    align-self: center;
+    justify-self: end;
+    padding-right:1rem;
+}
+
+.grid-box:nth-child(6) {
+    grid-area: six;
+    place-self: center;
+    padding: .75rem .75rem .75rem 0;
+}
+
+.duration {
+    font-size: 2.5rem;
+}
+
+.comment {
+    font-size: .8rem;
+    font-weight: 400;
+    line-height: 1.1rem;
+}
+
+.seconds {
+    font-size: .3rem
+}
+
+.result-text {
+    font-size: .75rem;
+    font-weight: 400;
+    letter-spacing: .2rem;
+    color: #00FF85;
+}
+
+.name {
+    font-size: .9rem;
+    font-weight: 700;
+    color: white;
+}
+
+.grid-nav {
+    display: grid;
+    gap: 0px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+        'one two three four';
+    padding: 1rem .75rem 1rem .75rem;
+}
+
+.nav-box:nth-child(1) {
+    grid-area: one;
+}
+.nav-box:nth-child(2) {
+    grid-area: two;
+    place-self: center;
+}
+.nav-box:nth-child(3) {
+    grid-area: three;
+    place-self: center;
+}
+.nav-box:nth-child(4) {
+    grid-area: four;
+    place-self: center;
+}
