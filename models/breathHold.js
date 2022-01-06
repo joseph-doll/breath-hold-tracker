@@ -4,11 +4,8 @@ const Schema = mongoose.Schema;
 const BreathHoldSchema = new Schema({
     name: String,
     duration: Number,
-    type: String,
-    orifice: String,
-    position: String,
-    underInfluence: String,
-    holdDate: String,
+    comments: String,
+    notes: String,
     createdAt: {
         type: Date,
         default: new Date(),

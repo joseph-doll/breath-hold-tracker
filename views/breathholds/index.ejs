@@ -35,7 +35,7 @@
     <% for (let breathhold of breathholds) {%> 
     <div class="grid-container">
         <div class="grid-box name">
-            <p>Joseph Doll </p>
+            <p><%= `${breathhold.name}`%>  </p>
         </div>
         <div class="grid-box">
             <p class="result-text">NEW RECORD!</p>
@@ -44,11 +44,12 @@
             <img src="/images/profileicon.svg" alt="">
         </div>
         <div class="grid-box">
-            <p class="comment">Wow, cannot believe I got
-                a new record!</p>
+            <p class="comment"><%= `${breathhold.comments}`%>  </p>
         </div>
         <div class="grid-box duration">
-            <p><%= `${breathhold.duration}` %> </p>
+            <a href="/breathholds/<%= breathhold._id %> " class="duration">
+                <p><%= `${breathhold.duration}` %> </p>
+            </a>
         </div>
         <div class="grid-box">
             <img src="/images/uparrow.svg" alt="">

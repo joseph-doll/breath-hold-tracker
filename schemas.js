@@ -27,10 +27,7 @@ module.exports.breathholdSchema = Joi.object({
     breathhold: Joi.object({
         name: Joi.string().required().escapeHTML(),
         duration: Joi.number().required().min(1),
-        type: Joi.string().required().escapeHTML(),
-        orifice: Joi.string().required().escapeHTML(),
-        position: Joi.string().required().escapeHTML(),
-        underInfluence: Joi.string().required().escapeHTML(),
-        holdDate: Joi.string().escapeHTML(),
+        comments: Joi.string().required().escapeHTML(),
+        notes: Joi.string().required().escapeHTML(),
     })
 });
