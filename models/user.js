@@ -13,6 +13,10 @@ const UserSchema = new Schema({
         type: Number,
         default: 1,
     },
+    recordHold: {
+        type: Number,
+        default: 1,
+    },
 });
 
 UserSchema.plugin(passportLocalMongoose);

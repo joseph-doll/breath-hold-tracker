@@ -45,7 +45,13 @@
             <p><%= `${breathhold.name}`%>  </p>
         </div>
         <div class="grid-status status-text">
-            <p>NEW RECORD!</p>
+            <% if(breathhold.duration > breathhold.prevHold) { %> 
+                <p style="color: #00ff85;">UP <%= breathhold.holdChange %>% </p>
+            <% } else if (breathhold.duration < breathhold.prevHold) { %>
+                <p style="color: #ff4242;">DOWN <%= breathhold.holdChange %>%</p>
+            <% } else {%>
+                <p style="color:rgb(148, 148, 148);">NO CHANGE</p>
+            <% } %> 
         </div>
         <div class="grid-profile">
             <img src="/images/profileicon.svg" alt="">
@@ -59,7 +65,13 @@
             </a>
         </div>
         <div class="grid-status-icon">
-            <img src="/images/uparrow.svg" alt="">
+            <% if(breathhold.duration > breathhold.prevHold) { %> 
+                <img src="/images/uparrow.svg" alt="">
+            <% } else if (breathhold.duration > breathhold.prevHold) { %>
+                <img src="/images/downarrow.svg" alt="">
+            <% } else { %>
+                <img src="/images/downarrow.svg" alt="">
+            <% } %>
         </div>
     </div>
     <% } %> 

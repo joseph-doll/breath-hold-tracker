@@ -22,7 +22,24 @@ module.exports.createTimedHold = async (req, res) => {
     const breathhold = new BreathHold(req.body.breathhold);
     breathhold.name = req.user.name;
     breathhold.author = req.user._id;
-    //add comments
+    breathhold.prevHold = req.user.prevHold;
+    //logic to get the change in percentage between prevHold and currentHold
+    const result = Math.abs(breathhold.duration - breathhold.prevHold) / breathhold.prevHold * 100;
+    breathhold.holdChange = result.toFixed(0);
+    
+    const recordCalc = req.user.recordHold;
+   
+    function calculateRecord(duration, record) {
+        if (duration<record) {
+            return record
+        } else {
+            return duration
+        }
+    }
+    const recordHold = calculateRecord(duration, recordCalc);
+    console.log(recordHold);
+    breathhold.recordHold = recordHold
+    await User.findByIdAndUpdate(_id, { recordHold: recordHold });
     await breathhold.save();
     res.redirect('/breathholds');
 }
