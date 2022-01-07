@@ -8,7 +8,7 @@ const BreathHoldSchema = new Schema({
     notes: String,
     createdAt: {
         type: Date,
-        default: new Date(),
+        default: Date.now,
     },
     author: {
         type: Schema.Types.ObjectId,

@@ -3,7 +3,7 @@
 let minute = 0;
 let second = 0;
 let millisecond = 0;
-
+let totalSeconds = 0;
 let time;
 
 document.getElementById('start').onclick = () => start();
@@ -23,6 +23,7 @@ function reset() {
     minute = 0;
     second = 0;
     millisecond = 0;
+    totalSeconds = 0;
     document.getElementById('minute').innerText = '00';
     document.getElementById('second').innerText = '00';
     document.getElementById('millisecond').innerText = '000';
@@ -33,6 +34,7 @@ function timer() {
     if ((millisecond += 10) == 1000) {
         millisecond = 0;
         second++;
+        totalSeconds++;
     };
     if (second == 60) {
         second = 0;
@@ -41,6 +43,7 @@ function timer() {
     document.getElementById('minute').innerText = returnData(minute);
     document.getElementById('second').innerText = returnData(second);
     document.getElementById('millisecond').innerText = returnMsData(millisecond);
+    document.getElementById('duration').value = totalSeconds;
 };
 
 //formats display with leading 0s

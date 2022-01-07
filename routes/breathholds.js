@@ -10,7 +10,10 @@ router.route('/')
 
 router.get('/timer', isLoggedIn, breathholds.timer);
 
-router.get('/new', isLoggedIn, breathholds.renderNewForm);
+//clean this up
+router.route('/new')
+    .get(isLoggedIn, breathholds.renderNewForm)
+    .post(isLoggedIn, validateBreathhold, catchAsync(breathholds.createTimedHold));
 
 router.route('/:id')
     .get(catchAsync(breathholds.showBreathhold))

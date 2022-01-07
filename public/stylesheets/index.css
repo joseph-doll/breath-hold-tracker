@@ -10,62 +10,62 @@ body {
     grid-template-rows: auto auto;
     grid-template-columns: .5fr 2fr 1fr .5fr;
     grid-template-areas: 
-        'one one two two'
-        'three four five six';
+        'profile name status status'
+        'profile comments duration direction';
     border-bottom: 1px solid rgb(53, 53, 53);
 }
 
-.grid-box:nth-child(1) {
-    grid-area: one;
-    padding: .75rem 0 0 .75rem;
+.grid-name {
+    grid-area: name;
+    padding: 1rem 0 0 .5rem;
 }
 
-.grid-box:nth-child(2) {
-    grid-area: two;
+.grid-status {
+    grid-area: status;
     justify-self: end;
-    padding: .75rem .75rem 0 0;
+    padding: 1rem .75rem 0 0;
 }
 
-.grid-box:nth-child(3) {
-    grid-area: three;
-    place-self: center;
-    padding: .75rem 0 .75rem .75rem;
+.grid-profile {
+    grid-area: profile;
+    padding: 1rem 0 .75rem .75rem;
 }
 
-.grid-box:nth-child(4) {
-    grid-area: four;
-    justify-self: center;
-    align-self: center;
-    padding: 0 .5rem 0 .5rem;
+.grid-comments {
+    grid-area: comments;
+    padding: .65rem 0 0 1rem;
+    
 }
 
-.grid-box:nth-child(5) {
-    grid-area: five;
+.grid-duration {
+    grid-area: duration;
     align-self: center;
     justify-self: end;
     padding-right:1rem;
 }
 
-.grid-box:nth-child(6) {
-    grid-area: six;
+.grid-status-icon {
+    grid-area: direction;
     place-self: center;
     padding: .75rem .75rem .75rem 0;
 }
 
 .duration {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     text-decoration:none;
     color: white;
 }
 
-.comment {
-    font-size: .7rem;
-    font-weight: 400;
-    line-height: 1rem;
+.comments {
+    font-size: .75rem;
+    font-weight: 100;
+    font-style: italic;
+    line-height: .9rem;
+    color: rgb(155, 155, 155);
 }
 
-.result-text {
-    font-size: .75rem;
+.status-text {
+    font-size: .65rem;
     font-weight: 400;
     letter-spacing: .2rem;
     color: #00FF85;
@@ -77,6 +77,10 @@ body {
     color: white;
 }
 
+.direction {
+    max-width: 25px;
+}
+
 .grid-nav {
     display: grid;
     gap: 0px;
@@ -84,6 +88,13 @@ body {
     grid-template-areas: 
         'one two three four';
     padding: 1rem .75rem 1rem .75rem;
+    border-bottom: 1px solid #ff4242;
+    background-color: black;
+}
+.sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
 }
 
 .nav-box:nth-child(1) {

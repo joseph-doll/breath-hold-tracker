@@ -12,7 +12,7 @@
     <title>Holds</title>
 </head>
 <body>
-    <nav class="grid-nav">
+    <nav class="grid-nav sticky">
         <div class="nav-box">
             <a href="/">
                 <img src="/images/flashIcon.svg" width="40px" height="40px">
@@ -34,24 +34,24 @@
     </nav>
     <% for (let breathhold of breathholds) {%> 
     <div class="grid-container">
-        <div class="grid-box name">
+        <div class="grid-name name">
             <p><%= `${breathhold.name}`%>  </p>
         </div>
-        <div class="grid-box">
-            <p class="result-text">NEW RECORD!</p>
+        <div class="grid-status status-text">
+            <p>NEW RECORD!</p>
         </div>
-        <div class="grid-box">
+        <div class="grid-profile">
             <img src="/images/profileicon.svg" alt="">
         </div>
-        <div class="grid-box">
-            <p class="comment"><%= `${breathhold.comments}`%>  </p>
+        <div class="grid-comments comments">
+            <p><%= `${breathhold.comments}`%>  </p>
         </div>
-        <div class="grid-box duration">
+        <div class="grid-duration duration">
             <a href="/breathholds/<%= breathhold._id %> " class="duration">
                 <p><%= `${breathhold.duration}` %> </p>
             </a>
         </div>
-        <div class="grid-box">
+        <div class="grid-status-icon">
             <img src="/images/uparrow.svg" alt="">
         </div>
     </div>

@@ -25,9 +25,10 @@ const Joi = BaseJoi.extend(extension);
 
 module.exports.breathholdSchema = Joi.object({
     breathhold: Joi.object({
-        name: Joi.string().required().escapeHTML(),
+        name: Joi.string().escapeHTML(),
         duration: Joi.number().required().min(1),
         comments: Joi.string().required().escapeHTML(),
-        notes: Joi.string().required().escapeHTML(),
+        notes: Joi.string().escapeHTML(),
+        author: Joi.string().escapeHTML()
     })
 });
