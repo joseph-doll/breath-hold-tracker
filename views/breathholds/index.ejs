@@ -14,23 +14,30 @@
 <body>
     <nav class="grid-nav sticky">
         <div class="nav-box">
+            <a href="/" style="color:rgb(148, 148, 148);">Home</a>
+        </div>
+        <div class="nav-box">
+            <a href="/breathholds/timer" style="color:rgb(148, 148, 148);">New Hold</a>
+        </div>
+    <% if(!currentUser) {%>
+
+        <div class="nav-box">
+            <a href="/login" style="color:rgb(148, 148, 148);">Login</a>
+        </div>
+        <!-- <div class="nav-box">
+            <a href="/register" style="color:rgb(148, 148, 148);">Register</a>
+        </div> -->
+    <% } else {%> 
+        <div class="nav-box">
+            <a href="/logout" style="color:rgb(148, 148, 148);">Logout</a>
+        </div>
+    <% } %>  
+        <div class="nav-box">
             <a href="/">
                 <img src="/images/flashIcon.svg" width="40px" height="40px">
             </a>
         </div>
-        <div class="nav-box">
-            <a href="/breathholds/new">New Hold</a>
-        </div>
-        <div class="nav-box">
-            <a href="/breathholds/timer">Timer</a>
-        </div>
-        <div class="nav-box">
-            <% if(!currentUser) {%>
-                <a href="/login">Login</a>
-                <% } else {%> 
-                <a href="/logout">Logout</a>
-                <% } %>  
-        </div>
+            
     </nav>
     <% for (let breathhold of breathholds) {%> 
     <div class="grid-container">

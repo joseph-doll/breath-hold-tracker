@@ -4,6 +4,7 @@ const User = require('../models/user');
 
 module.exports.index = async(req, res) => {
     const breathholds = await BreathHold.find({}).sort({ createdAt: -1 });
+    //add middleware for stat display
     res.render('breathholds/index', { breathholds });
 };
 
@@ -12,7 +13,6 @@ module.exports.timer = (req, res) => {
     res.render('breathholds/timer');
 };
 
-//updates User's previous Hold
 module.exports.createTimedHold = async (req, res) => {
     //updates previous hold on user
     const { duration } = req.body.breathhold;
@@ -24,29 +24,28 @@ module.exports.createTimedHold = async (req, res) => {
     breathhold.author = req.user._id;
     //add comments
     await breathhold.save();
-
     res.redirect('/breathholds');
 }
 
-module.exports.renderNewForm = async (req, res) => {
-    const { name } = req.user;
-    console.log(req.user)
-    res.render('breathholds/new', { name: name });
-};
+// module.exports.renderNewForm = async (req, res) => {
+//     const { name } = req.user;
+//     console.log(req.user)
+//     res.render('breathholds/new', { name: name });
+// };
 
-module.exports.createBreathhold = async (req, res, next) => {
-    const breathhold = new BreathHold(req.body.breathhold);
-    breathhold.name = req.user.name;
-    breathhold.author = req.user._id;
-    await breathhold.save();
-    if(breathhold.duration === 69) {
-        req.flash('success', 'Nice ;)'); //easter egg
-        res.redirect('/breathholds');
-    } else {
-        req.flash('success', 'Successfully created a new hold.');
-        res.redirect('/breathholds');
-    };
-};
+// module.exports.createBreathhold = async (req, res, next) => {
+//     const breathhold = new BreathHold(req.body.breathhold);
+//     breathhold.name = req.user.name;
+//     breathhold.author = req.user._id;
+//     await breathhold.save();
+//     if(breathhold.duration === 69) {
+//         req.flash('success', 'Nice ;)'); //easter egg
+//         res.redirect('/breathholds');
+//     } else {
+//         req.flash('success', 'Successfully created a new hold.');
+//         res.redirect('/breathholds');
+//     };
+// };
 
 module.exports.showBreathhold = async (req, res) => {
     const breathhold = await BreathHold.findById(req.params.id);
@@ -69,7 +68,6 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateBreathhold = async (req, res) => {
     const { id } = req.params;
-    console.log(req.body.breathhold);
     const breathhold = await BreathHold.findByIdAndUpdate(id, {
         ...req.body.breathhold,
     });

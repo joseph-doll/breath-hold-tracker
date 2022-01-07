@@ -33,7 +33,7 @@ body {
 
 .grid-comments {
     grid-area: comments;
-    padding: .65rem 0 0 1rem;
+    padding: .65rem 0 .5rem 1rem;
     
 }
 
@@ -99,6 +99,7 @@ body {
 
 .nav-box:nth-child(1) {
     grid-area: one;
+    place-self: center;
 }
 .nav-box:nth-child(2) {
     grid-area: two;

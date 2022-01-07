@@ -36,5 +36,5 @@ module.exports.logout = (req, res) => {
     const { name } = req.user;
     req.logout();
     req.flash('success', `See ya next time ${name}!`);
-    res.redirect('/');
+    res.redirect('/login');
 };
