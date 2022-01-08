@@ -57,7 +57,7 @@ body {
 }
 
 .comments {
-    font-size: .75rem;
+    font-size: 1rem;
     font-weight: 100;
     font-style: italic;
     line-height: .9rem;
@@ -65,16 +65,16 @@ body {
 }
 
 .status-text {
-    font-size: .65rem;
+    font-size: .85rem;
     font-weight: 400;
     letter-spacing: .2rem;
     color: #00FF85;
 }
 
 .name {
-    font-size: .9rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: white;
+    color: rgb(223, 223, 223);
 }
 
 .direction {
