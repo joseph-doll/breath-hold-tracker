@@ -26,9 +26,7 @@ module.exports.createTimedHold = async (req, res) => {
     //logic to get the change in percentage between prevHold and currentHold
     const result = Math.abs(breathhold.duration - breathhold.prevHold) / breathhold.prevHold * 100;
     breathhold.holdChange = result.toFixed(0);
-    
     const recordCalc = req.user.recordHold;
-   
     function calculateRecord(duration, record) {
         if (duration<record) {
             return record
@@ -37,7 +35,6 @@ module.exports.createTimedHold = async (req, res) => {
         }
     }
     const recordHold = calculateRecord(duration, recordCalc);
-    console.log(recordHold);
     breathhold.recordHold = recordHold
     await User.findByIdAndUpdate(_id, { recordHold: recordHold });
     await breathhold.save();

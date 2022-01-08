@@ -13,11 +13,11 @@
 </head>
 <body>
     <nav class="grid-nav sticky">
+        <a href="/">
+            <img src="/images/flashicon.svg" width="40px" height="40px">
+        </a>
         <div class="nav-box">
-            <a href="/" style="color:rgb(148, 148, 148);">Home</a>
-        </div>
-        <div class="nav-box">
-            <a href="/breathholds/timer" style="color:rgb(148, 148, 148);">New Hold</a>
+            <a href="/breathholds" style="color:rgb(148, 148, 148);">Holds</a>
         </div>
     <% if(!currentUser) {%>
 
@@ -33,8 +33,8 @@
         </div>
     <% } %>  
         <div class="nav-box">
-            <a href="/">
-                <img src="/images/flashIcon.svg" width="40px" height="40px">
+            <a href="/breathholds/timer">
+                <img src="/images/flashiconplus.svg" width="40px" height="40px">
             </a>
         </div>
             
@@ -53,8 +53,21 @@
                 <p style="color:rgb(148, 148, 148);">NO CHANGE</p>
             <% } %> 
         </div>
-        <div class="grid-profile">
-            <img src="/images/profileicon.svg" alt="">
+        <div class="grid-profile">   
+
+            <% if (breathhold.name === "Joe Doll") { %> 
+            <img src="/images/profileiconblue.svg" alt="">
+
+            <% } else if (breathhold.name === "JJ Saavedra") { %> 
+                <img src="/images/profileiconyellow.svg" alt="">
+
+            <% } else if (breathhold.name === "Jason Wolfe") { %>
+                <img src="/images/profileiconpurple.svg" alt=""> 
+
+            <% } else { %>
+                <img src="/images/profileiconorange.svg" alt="">
+            <% } %>  
+
         </div>
         <div class="grid-comments comments">
             <p><%= `${breathhold.comments}`%>  </p>
@@ -65,7 +78,8 @@
             </a>
         </div>
         <div class="grid-status-icon">
-            <% if(breathhold.duration > breathhold.prevHold) { %> 
+            <!-- record hold fire functionality -->
+            <% if (breathhold.duration > breathhold.prevHold) { %> 
                 <img src="/images/uparrow.svg" alt="">
             <% } else if (breathhold.duration > breathhold.prevHold) { %>
                 <img src="/images/downarrow.svg" alt="">
