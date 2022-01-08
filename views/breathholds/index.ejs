@@ -85,10 +85,10 @@
             <!-- record hold fire functionality -->
             <% if (breathhold.duration > breathhold.prevHold) { %> 
                 <img src="/images/uparrow.svg" alt="">
-            <% } else if (breathhold.duration > breathhold.prevHold) { %>
+            <% } else if (breathhold.duration < breathhold.prevHold) { %>
                 <img src="/images/downarrow.svg" alt="">
             <% } else { %>
-                <img src="/images/downarrow.svg" alt="">
+                <img src="/images/nochange.svg" alt="">
             <% } %>
         </div>
     </div>
