@@ -17,7 +17,7 @@ body {
 
 .grid-name {
     grid-area: name;
-    padding: 1rem 0 0 .5rem;
+    padding: 1rem 0 0 1rem;
 }
 
 .grid-status {
@@ -84,10 +84,10 @@ body {
 .grid-nav {
     display: grid;
     gap: 0px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
-        'one two three four';
-    padding: 1rem .75rem 1rem .75rem;
+        'one two three';
+    padding: 1rem 1rem .5rem 1rem;
     border-bottom: 1px solid #ff4242;
     background-color: black;
 }
@@ -99,7 +99,6 @@ body {
 
 .nav-box:nth-child(1) {
     grid-area: one;
-    place-self: center;
 }
 .nav-box:nth-child(2) {
     grid-area: two;
@@ -107,9 +106,5 @@ body {
 }
 .nav-box:nth-child(3) {
     grid-area: three;
-    place-self: center;
-}
-.nav-box:nth-child(4) {
-    grid-area: four;
-    place-self: center;
+    place-self: end;
 }

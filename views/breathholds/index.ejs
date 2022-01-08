@@ -13,37 +13,40 @@
     <title>Holds</title>
 </head>
 <body>
+
     <nav class="grid-nav sticky">
-        <a href="/">
-            <img src="/images/flashIcon.svg" width="40px" height="40px">
-        </a>
         <div class="nav-box">
-            <a href="/breathholds" style="color:rgb(148, 148, 148);">Holds</a>
+            <a href="/">
+                <img src="/images/home.svg" width="40px" height="40px">
+            </a>
+        </div>
+        <div class="nav-box">
+            <a href="/breathholds/timer">
+                <img src="/images/timerplus.svg" width="40px" height="40px">
+            </a>
         </div>
     <% if(!currentUser) {%>
-
         <div class="nav-box">
-            <a href="/login" style="color:rgb(148, 148, 148);">Login</a>
+            <a href="/login">
+                <img src="/images/user.svg" width="40px" height="40px">
+            </a>
         </div>
         <!-- <div class="nav-box">
             <a href="/register" style="color:rgb(148, 148, 148);">Register</a>
         </div> -->
     <% } else {%> 
         <div class="nav-box">
-            <a href="/logout" style="color:rgb(148, 148, 148);">Logout</a>
-        </div>
-    <% } %>  
-        <div class="nav-box">
-            <a href="/breathholds/timer">
-                <img src="/images/flashiconplus.svg" width="40px" height="40px">
+            <a href="/logout">
+                <img src="/images/user.svg" width="40px" height="40px">
             </a>
         </div>
-            
+    <% } %>  
+
     </nav>
     <% for (let breathhold of breathholds) {%> 
     <div class="grid-container">
         <div class="grid-name name">
-            <p><%= `${breathhold.name}`%>  </p>
+            <p><%= `${breathhold.name.toUpperCase()}`%>  </p>
         </div>
         <div class="grid-status status-text">
             <% if(breathhold.duration > breathhold.prevHold) { %> 
