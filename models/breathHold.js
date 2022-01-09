@@ -17,6 +17,7 @@ const BreathHoldSchema = new Schema({
     prevHold: Number,
     holdChange: Number,
     recordHold: Number,
+    prevRecord: Number,
 });
 
 module.exports = mongoose.model('Breathhold', BreathHoldSchema);
