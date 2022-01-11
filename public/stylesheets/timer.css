@@ -10,3 +10,8 @@
 .noteText {
     font-size: .7rem;
 }
+
+.main-container {
+    width: min(95%, 35rem);
+    margin-inline: auto;
+}

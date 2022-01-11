@@ -13,89 +13,91 @@
     <title>Holds</title>
 </head>
 <body>
+    <div class="main-container">
+        <nav class="grid-nav sticky">
+            <div class="nav-box">
+                <a href="/">
+                    <img src="/images/home.svg" width="40px" height="40px">
+                </a>
+            </div>
+            <div class="nav-box">
+                <a href="/breathholds/timer">
+                    <img src="/images/timerplus.svg" width="40px" height="40px">
+                </a>
+            </div>
+        <% if(!currentUser) {%>
+            <div class="nav-box">
+                <a href="/login">
+                    <img src="/images/user.svg" width="40px" height="40px">
+                </a>
+            </div>
+            <!-- <div class="nav-box">
+                <a href="/register" style="color:rgb(148, 148, 148);">Register</a>
+            </div> -->
+        <% } else {%> 
+            <div class="nav-box">
+                <a href="/logout">
+                    <img src="/images/user.svg" width="40px" height="40px">
+                </a>
+            </div>
+        <% } %>  
 
-    <nav class="grid-nav sticky">
-        <div class="nav-box">
-            <a href="/">
-                <img src="/images/home.svg" width="40px" height="40px">
-            </a>
-        </div>
-        <div class="nav-box">
-            <a href="/breathholds/timer">
-                <img src="/images/timerplus.svg" width="40px" height="40px">
-            </a>
-        </div>
-    <% if(!currentUser) {%>
-        <div class="nav-box">
-            <a href="/login">
-                <img src="/images/user.svg" width="40px" height="40px">
-            </a>
-        </div>
-        <!-- <div class="nav-box">
-            <a href="/register" style="color:rgb(148, 148, 148);">Register</a>
-        </div> -->
-    <% } else {%> 
-        <div class="nav-box">
-            <a href="/logout">
-                <img src="/images/user.svg" width="40px" height="40px">
-            </a>
-        </div>
-    <% } %>  
+        </nav>
+        <% for (let breathhold of breathholds) {%> 
+        <div class="grid-container">
+            <div class="grid-name name">
+                <p><%= `${breathhold.name.toUpperCase()}`%>  </p>
+            </div>
+            <div class="grid-status status-text">
+                <% if (breathhold.duration > breathhold.prevRecord) {%>
+                    <p style="color: #ffb446;">NEW RECORD</p>
+                <% } else if(breathhold.duration > breathhold.prevHold) { %> 
+                    <p style="color: #00ff85;">UP <%= breathhold.holdChange %>% </p>
+                <% } else if (breathhold.duration < breathhold.prevHold) { %>
+                    <p style="color: #ff4242;">DOWN <%= breathhold.holdChange %>%</p>
+                <% } else {%>
+                    <p style="color:rgb(148, 148, 148);">NO CHANGE</p>
+                <% } %> 
+            </div>
+            <div class="grid-profile">   
 
-    </nav>
-    <% for (let breathhold of breathholds) {%> 
-    <div class="grid-container">
-        <div class="grid-name name">
-            <p><%= `${breathhold.name.toUpperCase()}`%>  </p>
-        </div>
-        <div class="grid-status status-text">
-            <% if (breathhold.duration > breathhold.prevRecord) {%>
-                <p style="color: #ffb446;">NEW RECORD</p>
-            <% } else if(breathhold.duration > breathhold.prevHold) { %> 
-                <p style="color: #00ff85;">UP <%= breathhold.holdChange %>% </p>
-            <% } else if (breathhold.duration < breathhold.prevHold) { %>
-                <p style="color: #ff4242;">DOWN <%= breathhold.holdChange %>%</p>
-            <% } else {%>
-                <p style="color:rgb(148, 148, 148);">NO CHANGE</p>
-            <% } %> 
-        </div>
-        <div class="grid-profile">   
+                <% if (breathhold.name === "Joe Doll") { %> 
+                <img src="/images/profileiconblue.svg" alt="">
 
-            <% if (breathhold.name === "Joe Doll") { %> 
-            <img src="/images/profileiconblue.svg" alt="">
+                <% } else if (breathhold.name === "JJ Saavedra") { %> 
+                    <img src="/images/profileiconyellow.svg" alt="">
 
-            <% } else if (breathhold.name === "JJ Saavedra") { %> 
-                <img src="/images/profileiconyellow.svg" alt="">
+                <% } else if (breathhold.name === "Jason Wolfe") { %>
+                    <img src="/images/profileiconpurple.svg" alt=""> 
 
-            <% } else if (breathhold.name === "Jason Wolfe") { %>
-                <img src="/images/profileiconpurple.svg" alt=""> 
+                <% } else { %>
+                    <img src="/images/profileiconorange.svg" alt="">
+                <% } %>  
 
-            <% } else { %>
-                <img src="/images/profileiconorange.svg" alt="">
-            <% } %>  
-
+            </div>
+            <div class="grid-comments comments">
+                <p><%= `${breathhold.comments}`%>  </p>
+            </div>
+            <div class="grid-duration duration">
+                <a href="/breathholds/<%= breathhold._id %> " class="duration">
+                    <p><%= `${breathhold.duration}` %> </p>
+                </a>
+            </div>
+            <div class="grid-status-icon">
+                <% if (breathhold.duration > breathhold.prevRecord) {%>
+                    <img src="/images/fire.svg" alt="">
+                <% } else if (breathhold.duration > breathhold.prevHold) { %> 
+                    <img src="/images/uparrow.svg" alt="">
+                <% } else if (breathhold.duration < breathhold.prevHold) { %>
+                    <img src="/images/downarrow.svg" alt="">
+                <% } else { %>
+                    <img src="/images/nochange.svg" alt="">
+                <% } %>
+            </div>
         </div>
-        <div class="grid-comments comments">
-            <p><%= `${breathhold.comments}`%>  </p>
-        </div>
-        <div class="grid-duration duration">
-            <a href="/breathholds/<%= breathhold._id %> " class="duration">
-                <p><%= `${breathhold.duration}` %> </p>
-            </a>
-        </div>
-        <div class="grid-status-icon">
-            <% if (breathhold.duration > breathhold.prevRecord) {%>
-                <img src="/images/fire.svg" alt="">
-            <% } else if (breathhold.duration > breathhold.prevHold) { %> 
-                <img src="/images/uparrow.svg" alt="">
-            <% } else if (breathhold.duration < breathhold.prevHold) { %>
-                <img src="/images/downarrow.svg" alt="">
-            <% } else { %>
-                <img src="/images/nochange.svg" alt="">
-            <% } %>
-        </div>
-    </div>
-    <% } %> 
+        <% } %>
+    </div> 
     <script src="/javascripts/validateForms.js"></script>
+    
 </body>
 </html>

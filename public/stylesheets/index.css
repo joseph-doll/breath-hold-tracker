@@ -8,10 +8,10 @@ body {
     display: grid;
     gap: 0px;
     grid-template-rows: auto auto;
-    grid-template-columns: .5fr 2fr 1fr .5fr;
+    grid-template-columns: .5fr 2fr .5fr 1fr;
     grid-template-areas: 
         'profile name status status'
-        'profile comments duration direction';
+        'profile comments direction duration';
     border-bottom: 1px solid rgb(53, 53, 53);
 }
 
@@ -23,7 +23,7 @@ body {
 .grid-status {
     grid-area: status;
     justify-self: end;
-    padding: 1rem .75rem 0 0;
+    padding: 1rem .5rem 0 0;
 }
 
 .grid-profile {
@@ -41,17 +41,17 @@ body {
     grid-area: duration;
     align-self: center;
     justify-self: end;
-    padding-right:1rem;
+    padding-right:.5rem;
 }
 
 .grid-status-icon {
     grid-area: direction;
-    place-self: center;
-    padding: .75rem .75rem .75rem 0;
+    place-self: end;
+    padding: .75rem 0 .75rem 0;
 }
 
 .duration {
-    font-size: 2.25rem;
+    font-size: 2.1rem;
     text-decoration:none;
     color: white;
 }
@@ -67,7 +67,7 @@ body {
 .status-text {
     font-size: .85rem;
     font-weight: 400;
-    letter-spacing: .2rem;
+    letter-spacing: .15rem;
     color: #00FF85;
 }
 
@@ -107,4 +107,9 @@ body {
 .nav-box:nth-child(3) {
     grid-area: three;
     place-self: end;
+}
+
+.main-container {
+    width: min(95%, 35rem);
+    margin-inline: auto;
 }
