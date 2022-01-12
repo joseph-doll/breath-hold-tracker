@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="38.850651mm"
+   height="44.062408mm"
+   viewBox="0 0 38.850651 44.062408"
+   version="1.1"
+   id="svg43861"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="greyredicon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview43863"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="true"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="3.1108586"
+     inkscape:cx="63.808751"
+     inkscape:cy="98.2044"
+     inkscape:window-width="2560"
+     inkscape:window-height="1417"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs43858">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient16056"
+       id="linearGradient28587"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.75606345,0,0,0.75606345,-53.371456,-365.4153)"
+       x1="187.20129"
+       y1="674.54993"
+       x2="238.3625"
+       y2="674.54993" />
+    <linearGradient
+       id="linearGradient16056"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#ff4242;stop-opacity:1;"
+         offset="0"
+         id="stop16054" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-88.079828,-122.55642)">
+    <path
+       style="display:inline;fill:#ff4242;fill-opacity:1;stroke:none;stroke-width:2.32087;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 105.70267,153.57353 v -4.34401 l -2.88523,-0.02 -2.885227,-0.02 4.803227,-6.25049 4.80322,-6.25046 0.02,4.33155 0.02,4.3316 2.88901,0.02 2.88902,0.02 -4.75902,6.19079 c -2.61746,3.40488 -4.78944,6.22324 -4.82663,6.26289 -0.0398,0.042 -0.0679,-1.73042 -0.0679,-4.27185 z"
+       id="path86884-9"
+       inkscape:export-filename="E:\MyDocuments\BreathHoldTracker\public\images\newlogo.png"
+       inkscape:export-xdpi="39.189999"
+       inkscape:export-ydpi="39.189999" />
+    <path
+       id="path86270-1"
+       style="display:inline;fill:url(#linearGradient28587);fill-opacity:1;stroke:#000000;stroke-width:3.79075;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 103.16321,124.4518 v 1.34231 1.34378 h 4.33113 0.53128 3.80132 v -1.34378 -1.34231 h -4.3326 z m 4.05794,5.21418 c -1.53075,0.0231 -3.05359,0.24532 -4.51718,0.66747 -2.03751,0.58771 -3.699629,1.39524 -5.457838,2.64917 l -0.750159,0.53455 -1.416137,-1.41466 -1.416145,-1.41466 -1.346738,1.34674 -1.348212,1.34821 1.419094,1.4191 c 1.323806,1.32577 1.410464,1.42998 1.309818,1.56972 -0.764321,1.06058 -1.030611,1.46107 -1.422048,2.14265 -0.549244,0.95623 -0.981205,1.92037 -1.3807,3.07891 -1.001174,2.90343 -1.190218,6.27012 -0.524226,9.37253 0.384685,1.79205 1.39167,4.1915 2.423244,5.77533 2.79788,4.29571 7.349547,7.1589 12.492767,7.85744 1.0596,0.14402 3.24891,0.1443 4.34588,0.002 6.59341,-0.85885 12.05963,-5.19386 14.33715,-11.37197 2.0187,-5.47594 1.1201,-11.735 -2.35827,-16.43846 l -0.42675,-0.57741 1.41318,-1.41466 1.41319,-1.41466 -1.34821,-1.34821 -1.34674,-1.34674 -1.41467,1.41319 -1.41466,1.41319 -0.56115,-0.41495 c -1.79624,-1.32608 -3.98259,-2.36026 -6.1371,-2.90318 -1.49661,-0.37716 -3.03665,-0.55338 -4.56739,-0.53012 z m 0.34554,3.83348 c 5.78716,0.005 10.92747,3.66304 12.87227,9.15694 1.32504,3.74309 0.91072,8.05206 -1.10456,11.47679 -2.23635,3.80042 -6.08421,6.2569 -10.50366,6.70565 v 0.002 c -0.73798,0.0743 -1.88907,0.0877 -2.40405,0.0294 -2.26855,-0.25861 -3.88043,-0.73874 -5.51985,-1.6465 -3.48438,-1.92937 -5.912236,-5.16693 -6.780944,-9.04027 -1.23395,-5.50178 1.042536,-11.21202 5.729539,-14.36817 2.275055,-1.53203 4.894675,-2.3181 7.711255,-2.31544 z"
+       sodipodi:nodetypes="cccccccccccccccccccccsssccscccccccccccccssccccsccc"
+       inkscape:export-filename="E:\MyDocuments\BreathHoldTracker\public\images\newlogo.png"
+       inkscape:export-xdpi="39.189999"
+       inkscape:export-ydpi="39.189999" />
+    <path
+       style="display:inline;fill:#b3b3b3;fill-opacity:1;stroke:#000000;stroke-width:0.486427;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 104.12328,164.31865 c -5.384301,-1.13123 -9.90535,-4.60687 -12.219107,-9.39368 -1.368375,-2.83094 -1.819622,-4.76552 -1.81262,-7.77095 0.0087,-3.71111 0.940771,-6.70087 3.085453,-9.89662 0.349964,-0.52147 0.636297,-0.98899 0.636297,-1.03895 0,-0.05 -0.605004,-0.70562 -1.344448,-1.45705 l -1.344455,-1.36623 1.277901,-1.27791 1.277892,-1.27789 1.351859,1.34726 c 0.743521,0.74099 1.395498,1.34725 1.44884,1.34725 0.05338,0 0.585299,-0.33028 1.182118,-0.73396 3.07516,-2.07996 6.12681,-3.01277 9.83623,-3.00666 3.76944,0.006 6.81791,0.9529 9.96388,3.09426 0.52228,0.3555 0.99501,0.64636 1.05052,0.64636 0.0556,0 0.70927,-0.60626 1.45279,-1.34725 l 1.35185,-1.34726 1.28071,1.2807 1.2807,1.2807 -1.34726,1.35186 c -0.74099,0.74352 -1.34725,1.3955 -1.34725,1.44884 0,0.0534 0.33039,0.5853 0.73422,1.18212 1.35791,2.00689 2.28183,4.26282 2.76872,6.76031 0.33472,1.71698 0.30446,4.70383 -0.0654,6.46236 -0.72192,3.43178 -2.34308,6.45356 -4.7492,8.85235 -2.54073,2.53297 -5.55654,4.14971 -9.08021,4.86779 -1.76261,0.3592 -4.941,0.35551 -6.66996,-0.008 z m 6.83199,-3.78597 c 8.41564,-2.26535 12.68159,-11.47436 8.93539,-19.28904 -3.7782,-7.88143 -13.71513,-10.25667 -20.76719,-4.96402 -4.429329,3.32427 -6.400642,9.32556 -4.836393,14.72347 1.413887,4.87901 5.353845,8.5657 10.317063,9.65385 1.55473,0.34087 4.86372,0.27612 6.35113,-0.12426 z"
+       id="path14600-0-1"
+       inkscape:export-filename="E:\MyDocuments\BreathHoldTracker\public\images\newlogo.png"
+       inkscape:export-xdpi="39.189999"
+       inkscape:export-ydpi="39.189999" />
+  </g>
+</svg>
