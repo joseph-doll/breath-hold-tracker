@@ -80,6 +80,19 @@ passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//forces https
+app.use((req, res, next) => {
+    if (process.env.NODE_ENV === 'production') {
+        if (req.headers.host === 'your-app.herokuapp.com')
+            return res.redirect(301, 'https://www.holditin.com');
+        if (req.headers['x-forwarded-proto'] !== 'https')
+            return res.redirect('https://' + req.headers.host + req.url);
+        else
+            return next();
+    } else
+        return next();
+});
+
 app.use(flash());
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
