@@ -8,40 +8,35 @@
     <link rel="stylesheet" href="/stylesheets/timer.css">
     <title>HOLD IT! Timer</title>
 </head>
-
     <body class="d-flex flex-column vh-100 bg-black">
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">
-                    <img src="/images/greyredicon.svg" width="40px" height="40px">
-                </a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="/breathholds">Holds</a>
-                        <a class="nav-link" href="/breathholds/timer">New Hold</a>
-                    </div>
-                    <div class="navbar-nav ms-auto">
-                        <% if(!currentUser) {%>
-                        <a class="nav-link" href="/login">Login</a>
-                        <a class="nav-link" href="/register">Register</a>
-                        <% } else {%> 
-                        <a class="nav-link" href="/logout">Logout</a>
-                        <% } %> 
-                    </div>
+        <nav class="grid-nav sticky">
+            <% if(!currentUser) {%>
+                <div class="nav-box">
+                    <a href="/login">
+                        <img src="/images/user.svg" width="30px" height="30px">
+                    </a>
                 </div>
-            </div>
-        </nav>
+                <!-- <div class="nav-box">
+                    <a href="/register" style="color:rgb(148, 148, 148);">Register</a>
+                </div> -->
+            <% } else {%> 
+                <div class="nav-box">
+                    <a href="/breathholds/timer">
+                        <img src="/images/user.svg" width="30px" height="30px">
+                    </a>
+                </div>
+            <% } %>
+                <div class="nav-box">
+                    <a href="/breathholds">
+                        <img src="/images/newlogo.png" width="auto" height="30px">
+                    </a>
+                </div>
+                <div class="nav-box">
+                    <a href="/breathholds/timer">
+                        <img src="/images/timerplus.svg" width="30px" height="30px">
+                    </a>
+                </div>
+            </nav>
         <div class="main-container">
         <div class="container-fluid text-light mt-1">
                 <div class="px-3">
