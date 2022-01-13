@@ -13,35 +13,35 @@
     <title>Holds</title>
 </head>
 <body>
-    <nav class="grid-nav sticky">
-    <% if(!currentUser) {%>
-        <div class="nav-box">
-            <a href="/login">
-                <img src="/images/user.svg" width="30px" height="30px">
-            </a>
-        </div>
-        <!-- <div class="nav-box">
-            <a href="/register" style="color:rgb(148, 148, 148);">Register</a>
-        </div> -->
-    <% } else {%> 
-        <div class="nav-box">
-            <a href="/breathholds">
-                <img src="/images/user.svg" width="30px" height="30px">
-            </a>
-        </div>
-    <% } %>
-        <div class="nav-box">
-            <a href="/">
-                <img src="/images/newlogo.png" width="auto" height="30px">
-            </a>
-        </div>
-        <div class="nav-box">
-            <a href="/breathholds/timer">
-                <img src="/images/timerplus.svg" width="30px" height="30px">
-            </a>
-        </div>
-    </nav>
     <div class="main-container">
+        <nav class="grid-nav sticky">
+            <% if(!currentUser) {%>
+                <div class="nav-box">
+                    <a href="/login">
+                        <img src="/images/user.svg" width="30px" height="30px">
+                    </a>
+                </div>
+                <!-- <div class="nav-box">
+                    <a href="/register" style="color:rgb(148, 148, 148);">Register</a>
+                </div> -->
+            <% } else {%> 
+                <div class="nav-box">
+                    <a href="/logout">
+                        <img src="/images/user.svg" width="30px" height="30px">
+                    </a>
+                </div>
+            <% } %>
+                <div class="nav-box">
+                    <a href="/">
+                        <img src="/images/newlogo.png" width="auto" height="30px">
+                    </a>
+                </div>
+                <div class="nav-box">
+                    <a href="/breathholds/timer">
+                        <img src="/images/greyrediconplus.svg" width="auto" height="30px">
+                    </a>
+                </div>
+            </nav>
         <% for (let breathhold of breathholds) {%> 
         <div class="grid-container">
             <div class="grid-name name">
@@ -59,20 +59,15 @@
                 <% } %> 
             </div>
             <div class="grid-profile">   
-
                 <% if (breathhold.name === "Joe Doll") { %> 
                 <img src="/images/profileiconblue.svg" alt="">
-
                 <% } else if (breathhold.name === "JJ Saavedra") { %> 
                     <img src="/images/profileiconyellow.svg" alt="">
-
                 <% } else if (breathhold.name === "Jason Wolfe") { %>
                     <img src="/images/profileiconpurple.svg" alt=""> 
-
                 <% } else { %>
                     <img src="/images/profileiconorange.svg" alt="">
                 <% } %>  
-
             </div>
             <div class="grid-comments comments">
                 <p><%= `${breathhold.comments}`%>  </p>
@@ -97,6 +92,5 @@
         <% } %>
     </div> 
     <script src="/javascripts/validateForms.js"></script>
-    
 </body>
 </html>

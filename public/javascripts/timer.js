@@ -24,9 +24,8 @@ function reset() {
     second = 0;
     millisecond = 0;
     totalSeconds = 0;
-    document.getElementById('minute').innerText = '00';
+    document.getElementById('minute').innerText = '0';
     document.getElementById('second').innerText = '00';
-    document.getElementById('millisecond').innerText = '000';
 
 };
 
@@ -40,23 +39,12 @@ function timer() {
         second = 0;
         minute++;
     };
-    document.getElementById('minute').innerText = returnData(minute);
+    document.getElementById('minute').innerText = minute;
     document.getElementById('second').innerText = returnData(second);
-    document.getElementById('millisecond').innerText = returnMsData(millisecond);
     document.getElementById('duration').value = totalSeconds;
 };
 
 //formats display with leading 0s
 function returnData(input) {
     return input > 9 ? input : `0${input}`
-};
-
-function returnMsData(input){
-    if (input < 100 && input > 9) {
-        return `0${input}` 
-    };
-    if (input < 10) {
-        return `00${input}`
-    };
-    return input;
 };
