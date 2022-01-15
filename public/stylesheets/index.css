@@ -31,7 +31,7 @@ body {
 .grid-profile {
     grid-area: profile;
     justify-self: center;
-    padding-top: .5rem;
+    padding-top: .75rem;
 }
 
 .grid-comments {
@@ -42,14 +42,15 @@ body {
 
 .grid-duration {
     grid-area: duration;
-    align-self: center;
     justify-self: end;
+    padding: .75rem .25rem .75rem 0;
 }
 
 .grid-status-icon {
     grid-area: status-icon;
-    place-self: end;
-    padding: .75rem 0 .75rem 0;
+    justify-self: end;
+    padding: .75rem .0 .75rem 0;
+
 }
 
 .duration {
@@ -74,6 +75,8 @@ body {
 .name {
     font-size: .9rem;
     color: white;
+    font-weight: 700;
+    font-style: italic;
 }
 .grid-nav {
     display: grid;
@@ -106,4 +109,21 @@ body {
 .main-container {
     width: min(95%, 35rem);
     margin-inline: auto;
+}
+
+.user-stats {
+    font-size: .6rem;
+    color: #7e7e7e;
+    display: flex;
+    flex-direction: column;
+    padding-top: .5rem;
+    align-items: center;
+    padding-bottom: .75rem;
+    line-height: .8rem;
+}
+
+.flex-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

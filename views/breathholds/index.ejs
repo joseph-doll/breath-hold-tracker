@@ -44,7 +44,7 @@
         <% for (let breathhold of breathholds) {%> 
         <div class="grid-container">
             <div class="grid-name name">
-                <p><%= `${breathhold.name} (Avg: ${ breathhold.currentAvg })`%>  </p>
+                <p><%= `${breathhold.name}`%></p>
             </div>
             <div class="grid-status status-text">
                 <% if (breathhold.duration > breathhold.prevRecord) {%>
@@ -57,16 +57,28 @@
                     <p style="color:rgb(148, 148, 148);">NO CHANGE</p>
                 <% } %> 
             </div>
+            <div>
+
+            </div>
             <div class="grid-profile">   
-                <% if (breathhold.name === "Joe Doll") { %> 
-                <img src="/images/profileiconblue.svg" alt="">
-                <% } else if (breathhold.name === "JJ Saavedra") { %> 
-                    <img src="/images/profileiconyellow.svg" alt="">
-                <% } else if (breathhold.name === "Jason Wolfe") { %>
-                    <img src="/images/profileiconpurple.svg" alt=""> 
-                <% } else { %>
-                    <img src="/images/profileiconorange.svg" alt="">
-                <% } %>  
+
+                <div class="flex-user">
+                    <% if (breathhold.name === "Joe Doll") { %> 
+                        <img src="/images/profileiconblue.svg" alt="">
+                        <% } else if (breathhold.name === "JJ Saavedra") { %> 
+                            <img src="/images/profileiconyellow.svg" alt="">
+                        <% } else if (breathhold.name === "Jason Wolfe") { %>
+                            <img src="/images/profileiconpurple.svg" alt=""> 
+                        <% } else { %>
+                            <img src="/images/profileiconorange.svg" alt="">
+                        <% } %>         
+                </div>
+
+                <div class="user-stats">
+                    <p>Avg: <%= breathhold.currentAvg %> </p>
+                    <p>Record: <%= breathhold.recordHold %> </p>
+                </div>
+
             </div>
             <div class="grid-comments comments">
                 <p><%= `${breathhold.comments}`%>  </p>
@@ -84,7 +96,7 @@
                 <% } else if (breathhold.duration < breathhold.prevAvg) { %>
                     <img src="/images/downarrow.svg" alt="">
                 <% } else { %>
-                    <img src="/images/nochange.svg" alt="">
+                    <img src="/images/nochange.svg" alt="" style="width: 22px; height: 22px; padding-top: .25rem;">
                 <% } %>
             </div>
         </div>
