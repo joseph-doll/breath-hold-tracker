@@ -44,7 +44,7 @@
         <% for (let breathhold of breathholds) {%> 
         <div class="grid-container">
             <div class="grid-name name">
-                <p><%= `${breathhold.name.toUpperCase()} (Avg: ${ breathhold.currentAvg })`%>  </p>
+                <p><%= `${breathhold.name} (Avg: ${ breathhold.currentAvg })`%>  </p>
             </div>
             <div class="grid-status status-text">
                 <% if (breathhold.duration > breathhold.prevRecord) {%>

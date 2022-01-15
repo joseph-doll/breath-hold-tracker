@@ -23,12 +23,12 @@ body {
 .grid-status {
     grid-area: status;
     justify-self: end;
-    padding: 1rem .5rem 0 0;
+    padding: 1rem 0 0 0;
 }
 
 .grid-profile {
     grid-area: profile;
-    padding: 1rem 0 .75rem .75rem;
+    padding: 1rem 0 .75rem 0;
 }
 
 .grid-comments {
@@ -41,7 +41,6 @@ body {
     grid-area: duration;
     align-self: center;
     justify-self: end;
-    padding-right:.5rem;
 }
 
 .grid-status-icon {
@@ -57,24 +56,21 @@ body {
 }
 
 .comments {
-    font-size: 1rem;
-    font-weight: 100;
+    font-size: .8rem;
+    color: #b3b3b3;
     font-style: italic;
-    line-height: .9rem;
-    color: rgb(155, 155, 155);
 }
 
 .status-text {
-    font-size: .85rem;
+    font-size: .6rem;
     font-weight: 400;
-    letter-spacing: .15rem;
+    letter-spacing: .1rem;
     color: #00FF85;
 }
 
 .name {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: rgb(223, 223, 223);
+    font-size: .9rem;
+    color: white;
 }
 
 .direction {
