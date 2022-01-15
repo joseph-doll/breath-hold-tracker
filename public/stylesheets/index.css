@@ -8,32 +8,35 @@ body {
     display: grid;
     gap: 0px;
     grid-template-rows: auto auto;
-    grid-template-columns: .5fr 2fr .5fr 1fr;
+    grid-template-columns: 1.5fr 4.75fr 3fr .75fr;
     grid-template-areas: 
         'profile name status status'
-        'profile comments direction duration';
+        'profile comments duration status-icon';
     border-bottom: 1px solid rgb(53, 53, 53);
 }
 
 .grid-name {
     grid-area: name;
-    padding: 1rem 0 0 1rem;
+    align-self: center;
+    padding: .75rem 0 0 .5rem;
 }
 
 .grid-status {
     grid-area: status;
     justify-self: end;
-    padding: 1rem 0 0 0;
+    align-self: center;
+    padding-top: .75rem;
 }
 
 .grid-profile {
     grid-area: profile;
-    padding: 1rem 0 .75rem 0;
+    justify-self: center;
+    padding-top: .5rem;
 }
 
 .grid-comments {
     grid-area: comments;
-    padding: .65rem 0 .5rem 1rem;
+    padding: .75rem 0 .5rem 1rem;
     
 }
 
@@ -44,7 +47,7 @@ body {
 }
 
 .grid-status-icon {
-    grid-area: direction;
+    grid-area: status-icon;
     place-self: end;
     padding: .75rem 0 .75rem 0;
 }
@@ -72,11 +75,6 @@ body {
     font-size: .9rem;
     color: white;
 }
-
-.direction {
-    max-width: 25px;
-}
-
 .grid-nav {
     display: grid;
     gap: 0px;
