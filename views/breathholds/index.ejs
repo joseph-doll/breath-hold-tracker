@@ -45,14 +45,14 @@
         <% for (let breathhold of breathholds) {%> 
         <div class="grid-container">
             <div class="grid-name name">
-                <p><%= `${breathhold.name.toUpperCase()} (Avg: ${ breathhold.currentAvg }s)`%>  </p>
+                <p><%= `${breathhold.name.toUpperCase()} (Avg: ${ breathhold.currentAvg })`%>  </p>
             </div>
             <div class="grid-status status-text">
                 <% if (breathhold.duration > breathhold.prevRecord) {%>
                     <p style="color: #ffb446;">NEW RECORD</p>
-                <% } else if(breathhold.duration > breathhold.currentAvg) { %> 
+                <% } else if(breathhold.duration > breathhold.prevAvg) { %> 
                     <p style="color: #00ff85;">UP <%= breathhold.avgDiff.toFixed() %>% FROM AVG</p>
-                <% } else if (breathhold.duration < breathhold.currentAvg) { %>
+                <% } else if (breathhold.duration < breathhold.prevAvg) { %>
                     <p style="color: #ff4242;">DOWN <%= breathhold.avgDiff.toFixed() %>% FROM AVG</p>
                 <% } else {%>
                     <p style="color:rgb(148, 148, 148);">NO CHANGE</p>
@@ -80,9 +80,9 @@
             <div class="grid-status-icon">
                 <% if (breathhold.duration > breathhold.prevRecord) {%>
                     <img src="/images/fire.svg" alt="">
-                <% } else if (breathhold.duration > breathhold.currentAvg) { %> 
+                <% } else if (breathhold.duration > breathhold.prevAvg) { %> 
                     <img src="/images/uparrow.svg" alt="">
-                <% } else if (breathhold.duration < breathhold.currentAvg) { %>
+                <% } else if (breathhold.duration < breathhold.prevAvg) { %>
                     <img src="/images/downarrow.svg" alt="">
                 <% } else { %>
                     <img src="/images/nochange.svg" alt="">

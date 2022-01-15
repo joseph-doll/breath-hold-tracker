@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 const BreathHoldSchema = new Schema({
     name: String,
+    holdNumber: {
+        type: Number,
+        default: 0,
+    },
     duration: Number,
     comments: String,
     notes: String,
@@ -15,11 +19,14 @@ const BreathHoldSchema = new Schema({
         ref: 'User',
     },
     prevHold: Number,
-    holdChange: Number,
     prevRecord: Number,
     recordHold: Number,
     currentAvg: Number,
-    avgDiff: Number,
+    prevAvg: Number,
+    avgDiff: {
+        type: Number,
+        default: 0,
+    },
 });
 
 module.exports = mongoose.model('Breathhold', BreathHoldSchema);

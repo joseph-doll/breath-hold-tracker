@@ -21,13 +21,6 @@ module.exports.createTimedHold = async (req, res) => {
     breathhold.name = req.user.name;
     breathhold.author = req.user._id;
     breathhold.prevHold = req.user.prevHold;
-    //calculates percentage difference between new and previous Holds
-
-    //DEPRECATED, REMOVE ME START
-    const result = Math.abs(breathhold.duration - breathhold.prevHold) / breathhold.prevHold * 100;
-    breathhold.holdChange = result.toFixed();
-    //DEPRECATED, REMOVE ME END
-
     //updates User RecordHold with new record if there is one
     const prevRecord = req.user.recordHold;
     function calculateRecord(duration, record) {
@@ -38,20 +31,23 @@ module.exports.createTimedHold = async (req, res) => {
         };
     };
     const updatedRecord = calculateRecord(duration, prevRecord);
-    //updates recordHold and prevHold on current Hold
+    //updates recordHold and prevRecord on current Hold
     breathhold.recordHold = updatedRecord;
     breathhold.prevRecord = prevRecord;
     //updates total holds
     let { totalHolds } = req.user;
     totalHolds += 1;
+    breathhold.holdNumber = totalHolds;
     //updates sum of hold seconds
     let { sumHoldSeconds } = req.user;
     sumHoldSeconds += breathhold.duration;
     //updates avgerages
+    breathhold.prevAvg = req.user.avgHold; //updates current Hold with User's previous average
     avgResult = sumHoldSeconds/totalHolds;
     avgHold = avgResult.toFixed(); 
     breathhold.currentAvg = avgHold;
-    breathhold.avgDiff = Math.abs(breathhold.duration - breathhold.currentAvg) / breathhold.currentAvg * 100;
+    breathholdAverage = Math.abs(breathhold.duration - breathhold.prevAvg) / breathhold.prevAvg * 100;
+    breathhold.avgDiff = breathholdAverage.toFixed()
      //end 
     await User.findByIdAndUpdate(_id, { 
         recordHold: updatedRecord,
