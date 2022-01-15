@@ -16,8 +16,8 @@ const BreathHoldSchema = new Schema({
     },
     prevHold: Number,
     holdChange: Number,
-    recordHold: Number,
     prevRecord: Number,
+    recordHold: Number,
     currentAvg: Number,
     avgDiff: Number,
 });

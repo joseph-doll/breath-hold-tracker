@@ -7,12 +7,8 @@ const breathholds = require('../controllers/breathholds');
 router.route('/')
     .get(catchAsync(breathholds.index))
     .post(isLoggedIn, validateBreathhold, catchAsync(breathholds.createTimedHold));
-    // .post(isLoggedIn, validateBreathhold, catchAsync(breathholds.createBreathhold));
 
 router.get('/timer', isLoggedIn, breathholds.timer);
-
-router.route('/new')
-    // .get(isLoggedIn, breathholds.renderNewForm)
 
 router.route('/:id')
     .get(catchAsync(breathholds.showBreathhold))
@@ -22,9 +18,3 @@ router.route('/:id')
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(breathholds.renderEditForm));
 
 module.exports = router;
-
-
-
-
-
-
