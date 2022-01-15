@@ -18,6 +18,8 @@ const BreathHoldSchema = new Schema({
     holdChange: Number,
     recordHold: Number,
     prevRecord: Number,
+    currentAvg: Number,
+    avgDiff: Number,
 });
 
 module.exports = mongoose.model('Breathhold', BreathHoldSchema);

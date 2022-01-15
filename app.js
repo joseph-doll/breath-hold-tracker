@@ -21,7 +21,7 @@ const dbUrl = process.env.DB_URL;
 const localDb = 'mongodb://127.0.0.1:27017/breath-hold-tracker';
 const MongoStore = require('connect-mongo')(session);
 
-mongoose.connect(dbUrl, {
+mongoose.connect(localDb, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -50,7 +50,7 @@ app.use(mongoSanitize({ replaceWith: '_'}));
 const secret = process.env.SECRET || 'flapjacksforfrank'
 
 const store = new MongoStore({
-    url: dbUrl,
+    url: localDb,
     secret,
     touchAfter: 24 * 60 * 60,
 });
@@ -157,6 +157,6 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT;
-app.listen(port, () => {
-    console.log(`Serving on port ${port}`);
+app.listen(3000, () => {
+    console.log(`Serving on port ${3000}`);
 });

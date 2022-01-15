@@ -17,6 +17,18 @@ const UserSchema = new Schema({
         type: Number,
         default: 1,
     },
+    avgHold: {
+        type: Number,
+        default: 0,
+    },
+    totalHolds: {
+        type: Number,
+        default: 0,
+    },
+    sumHoldSeconds: {
+        type: Number,
+        default: 0,
+    },
 });
 
 UserSchema.plugin(passportLocalMongoose);

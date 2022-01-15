@@ -45,15 +45,15 @@
         <% for (let breathhold of breathholds) {%> 
         <div class="grid-container">
             <div class="grid-name name">
-                <p><%= `${breathhold.name.toUpperCase()}`%>  </p>
+                <p><%= `${breathhold.name.toUpperCase()} (Avg: ${ breathhold.currentAvg }s)`%>  </p>
             </div>
             <div class="grid-status status-text">
                 <% if (breathhold.duration > breathhold.prevRecord) {%>
                     <p style="color: #ffb446;">NEW RECORD</p>
-                <% } else if(breathhold.duration > breathhold.prevHold) { %> 
-                    <p style="color: #00ff85;">UP <%= breathhold.holdChange %>% </p>
-                <% } else if (breathhold.duration < breathhold.prevHold) { %>
-                    <p style="color: #ff4242;">DOWN <%= breathhold.holdChange %>%</p>
+                <% } else if(breathhold.duration > breathhold.currentAvg) { %> 
+                    <p style="color: #00ff85;">UP <%= breathhold.avgDiff.toFixed() %>% FROM AVG</p>
+                <% } else if (breathhold.duration < breathhold.currentAvg) { %>
+                    <p style="color: #ff4242;">DOWN <%= breathhold.avgDiff.toFixed() %>% FROM AVG</p>
                 <% } else {%>
                     <p style="color:rgb(148, 148, 148);">NO CHANGE</p>
                 <% } %> 
@@ -80,9 +80,9 @@
             <div class="grid-status-icon">
                 <% if (breathhold.duration > breathhold.prevRecord) {%>
                     <img src="/images/fire.svg" alt="">
-                <% } else if (breathhold.duration > breathhold.prevHold) { %> 
+                <% } else if (breathhold.duration > breathhold.currentAvg) { %> 
                     <img src="/images/uparrow.svg" alt="">
-                <% } else if (breathhold.duration < breathhold.prevHold) { %>
+                <% } else if (breathhold.duration < breathhold.currentAvg) { %>
                     <img src="/images/downarrow.svg" alt="">
                 <% } else { %>
                     <img src="/images/nochange.svg" alt="">

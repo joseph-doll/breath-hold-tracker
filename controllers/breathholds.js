@@ -38,7 +38,35 @@ module.exports.createTimedHold = async (req, res) => {
     }
     const updatedRecord = calculateRecord(duration, prevRecord);
     breathhold.recordHold = updatedRecord;
-    await User.findByIdAndUpdate(_id, { recordHold: updatedRecord });
+
+    breathhold.prevRecord = prevRecord;
+    //start avgHold difference logic
+
+    //avgHold, totalHolds, sumHoldSeconds
+    //updates total holds
+    let { totalHolds }  = req.user;
+    totalHolds += 1;
+    //updates sum of hold seconds
+    let { sumHoldSeconds } = req.user;
+    sumHoldSeconds += breathhold.duration;
+
+    //updates avgerage Hold
+    let { avgHold } = req.user;
+    avgResult = sumHoldSeconds/totalHolds;
+    avgHold = avgResult.toFixed();
+    //end 
+
+    breathhold.currentAvg = avgHold;
+
+    breathhold.avgDiff = Math.abs(breathhold.duration - breathhold.currentAvg) / breathhold.currentAvg * 100;
+ 
+
+    await User.findByIdAndUpdate(_id, { 
+        recordHold: updatedRecord,
+        totalHolds: totalHolds,
+        sumHoldSeconds: sumHoldSeconds,
+        avgHold: avgHold,
+    });
 
     await breathhold.save();
     res.redirect('/breathholds');
