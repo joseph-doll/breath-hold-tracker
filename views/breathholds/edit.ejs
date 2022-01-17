@@ -32,32 +32,29 @@
         <h4 class="text-center mt-3">EDIT</h4>
             <form action="/breathholds/<%= breathhold._id %>?_method=PUT" method="POST" class="validated-form" novalidate>
                 <div class="mb-1">
-                    <label class="form-label mb-0 mt-1" for="name">Name</label>
+                    <label class="form-label mb-1 mt-1" for="name">Name</label>
                     <input class="form-control" type="text" id="name" name="breathhold[name]" value="<%= breathhold.name %>" required/>
                 </div>
                 <div class="mb-1">
-                    <label class="form-label mb-0 mt-1" for="duration">Duration</label>
+                    <label class="form-label mb-1 mt-1" for="duration">Duration</label>
                     <input class="form-control" type="text" id="duration" name="breathhold[duration]" value="<%= breathhold.duration %>" required/>
-                    <div id="durationHelp" class="form-text text-muted" style="font-size: .7rem;">seconds</div>
+                    <div id="durationHelp" class="form-text text-muted" style="font-size: .8rem;">Seconds</div>
                 </div>
                 <div class="mb-1">
-                    <label class="form-label mb-0 mt-1" for="notes">Notes</label>
-                    <input class="form-control" type="text" id="notes" name="breathhold[notes]" value="<%= breathhold.notes %>"/>
+                    <label class="form-label mb-1 mt-1" for="notes">Notes</label>
+                    <textarea class="form-control" type="text" id="notes" name="breathhold[notes]" value="<%= breathhold.notes %>"/></textarea>
                 </div>
                 <div class="mb-1">
-                    <label class="form-label mb-0 mt-1" for="comments">Comments</label>
-                    <input class="form-control" type="text" id="comments" name="breathhold[comments]" value="<%= breathhold.comments %>" required/>
+                    <label class="form-label mb-1 mt-1" for="comments">Comments</label>
+                    <textarea class="form-control" type="text" id="comments" name="breathhold[comments]" value="<%= breathhold.comments %>" required/></textarea
                 </div>
 
-                <div class="d-grid gap-2 pb-3">
+                <div class="d-grid gap-2 pb-3 mt-3">
                     <button class="btn btn-danger mt-2">SUBMIT CHANGES</button>
                 </div>
-                <!-- <div class="d-grid gap-2 pb-3">
-                    <button class="btn btn-danger mt-2">CANCEL</button>
-                </div> -->
             </form>
-        <div class="card border-0 mb-3">
-            <a href="/breathholds/<%= breathhold._id %>" role="button" class="btn btn-secondary btn-sm">CANCEL</a>
-        </div>       
+            <div class="card border-0 mb-3 mt-1">
+                <a href="/breathholds/<%= breathhold._id %>" role="button" class="btn btn-secondary btn-sm">CANCEL</a>
+            </div>       
     </div>
 </div>

@@ -83,7 +83,7 @@ passport.deserializeUser(User.deserializeUser());
 //forces https
 app.use((req, res, next) => {
     if (process.env.NODE_ENV === 'production') {
-        if (req.headers.host === 'your-app.herokuapp.com')
+        if (req.headers.host === 'holditin.com')
             return res.redirect(301, 'https://www.holditin.com');
         if (req.headers['x-forwarded-proto'] !== 'https')
             return res.redirect('https://' + req.headers.host + req.url);
