@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const BreathHoldSchema = new Schema({
     name: String,
+    username: String,
     holdNumber: {
         type: Number,
         default: 0,

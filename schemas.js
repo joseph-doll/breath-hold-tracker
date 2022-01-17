@@ -28,7 +28,7 @@ module.exports.breathholdSchema = Joi.object({
         name: Joi.string().escapeHTML(),
         duration: Joi.number().required().min(1),
         comments: Joi.string().required().escapeHTML(),
-        notes: Joi.string().escapeHTML(),
+        notes: Joi.string(),
         author: Joi.string().escapeHTML(),
     })
 });

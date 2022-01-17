@@ -55,6 +55,7 @@ module.exports.createTimedHold = async (req, res) => {
         sumHoldSeconds: sumHoldSeconds,
         avgHold: avgHold,
     });
+    breathhold.username = req.user.username;
     await breathhold.save();
     res.redirect('/breathholds');
 }
