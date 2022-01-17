@@ -25,13 +25,13 @@ body {
 
 .profile-icon {
     grid-area: profile;
-    padding-top: .625rem;
+    padding-top: 1rem;
     justify-self: center;
 }
 
 .name {
     grid-area: name;
-    padding: 1rem 0 0 1rem;
+    padding: 1.25rem 0 0 1rem;
     font-size: .875rem;
     font-weight: bold;
 }
@@ -42,7 +42,7 @@ body {
 
 .time {
     grid-area: time;
-    padding-top: 1rem;
+    padding-top: 1.25rem;
     font-size: .625rem;
     color: #999999;
     justify-self: end;
@@ -52,7 +52,7 @@ body {
 .comments {
     grid-area: comments;
     font-family: 'Encode Sans Semi Expanded', sans-serif;
-    padding: 1rem .5rem 0 1rem;
+    padding: 1rem .5rem 1rem 1rem;
     font-size: .8125rem;
     color: #FCF2DA;
     line-height: 1rem;
@@ -67,9 +67,9 @@ body {
 .stats {
     grid-area: stats;
     font-size: .625rem;
-    line-height: 1rem;
+    line-height: .75rem;
     color: #999999;
-    padding-bottom: .625rem;
+    padding: .25rem 0 1rem 0;
     justify-self: center;
 }
 
@@ -78,7 +78,7 @@ body {
     font-size: .75rem;
     align-self: end;
     justify-self: end;
-    padding-bottom: .625rem;
+    padding-bottom: 1rem;
 }
 
 .grid-nav {

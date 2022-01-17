@@ -83,13 +83,13 @@
                 <!-- Trend -->
                 <div class="trend">
                 <% if (breathhold.duration > breathhold.prevRecord) {%>
-                    <p style="color: #ffb446;"><img src="/images/fire.svg" style="height: 1rem; width: auto; padding-right: .5rem;" alt="">NEW RECORD</p>
+                    <p style="color: #ffb446;"><img src="/images/fire.svg" style="height: .7rem; width: auto; padding-right: .5rem;" alt="">NEW RECORD</p>
                 <% } else if(breathhold.duration > breathhold.prevAvg) { %> 
-                    <p style="color: #00ff85;"><img src="/images/uparrow.svg" style="height: 1rem; width: auto; padding-right: .5rem;" alt=""><%= breathhold.avgDiff.toFixed() %>% FROM AVG</p>
+                    <p style="color: #00ff85;"><img src="/images/uparrow.svg" style="height: .7rem; width: auto; padding-right: .5rem;" alt=""><%= breathhold.avgDiff.toFixed() %>% FROM AVG</p>
                 <% } else if (breathhold.duration < breathhold.prevAvg) { %>
-                    <p style="color: #ff4242;"><img src="/images/downarrow.svg" style="height: 1rem; width: auto; padding-right: .5rem;" alt=""><%= breathhold.avgDiff.toFixed() %>% FROM AVG</p>
+                    <p style="color: #ff4242;"><img src="/images/downarrow.svg" style="height: .7rem; width: auto; padding-right: .5rem;" alt=""><%= breathhold.avgDiff.toFixed() %>% FROM AVG</p>
                 <% } else {%>
-                    <p style="color:rgb(148, 148, 148);"><img src="/images/nochange.svg" alt="" style="height: 1rem; width: auto; padding-right: .5rem;">NO CHANGE</p>
+                    <p style="color:rgb(148, 148, 148);"><img src="/images/nochange.svg" alt="" style="height: .7rem; width: auto; padding-right: .5rem;">NO CHANGE</p>
                 <% } %> 
                 </div>
 
