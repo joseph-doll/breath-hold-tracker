@@ -5,7 +5,7 @@ let second = 0;
 let millisecond = 0;
 let totalSeconds = 0;
 let time;
-let squares = 300;
+let squares = 299;
 
 document.getElementById('start').onclick = () => start();
 document.getElementById('stop').onclick = () => stop();
@@ -84,7 +84,8 @@ function timer() {
 // };
 
 const container = document.getElementById('container');
-const neonColors = ['#0CF2DB', '#1B1259', '#0A0626', '#4E0FA6', '#C007D9'];
+const neonColors = ['#0CF2DB', '#1B1259', '#4E0FA6', '#C007D9'];
+const brightColors = ['#F50DFF', '#BE0DFF', '#8100FF', '#500CFF', '#2013FF']
 
 //draws div board
 for(let i = 0; i < squares; i++) {
@@ -107,5 +108,5 @@ function removeColor(element) {
 
 
 function getRandomColor() {
-    return neonColors[Math.floor(Math.random() * neonColors.length)];
+    return brightColors[Math.floor(Math.random() * brightColors.length)];
 }
