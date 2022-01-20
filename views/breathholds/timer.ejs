@@ -38,23 +38,22 @@
                         </a>
                     </div>
                 </nav>
+            <div class="dot-container" id="dotContainer"></div>
             <div class="px-3">
-                <div class="big-nums text-center">
-                    <span id="minute" class="timer-nums">0</span><span class="timer-text">min</span><br>
-                    <span id="second" class="timer-nums">00</span><span class="timer-text">sec</span><br>
-                    <span id="millisecond" class="timer-nums" style="display: none;">000</span><span class="timer-text" style="display: none;">ms</span>
+                <div class="num-display text-center">
+                    <span id="minute" class="timer-nums">0</span><span id="minText" class="timer-text">MINUTES</span>
+                    <span id="second" class="timer-nums sec">0</span><span id="secText" class="timer-text">SECONDS</span>
                 </div>
                 <div name="timer_controls">
-                    <div class="card border-0 mt-3 bg-black">
-                        <button type="button" id="start" name="start" class="btn btn-success btn-sm border-0 p-2 mb-3 rounded-3">START</button>
-                        <button type="button" id="stop" name="stop" class="btn btn-danger btn-sm border-0 p-2 rounded-3 mb-3">STOP</button>
-                        <button type="button" id="reset" name="reset" class="btn btn-secondary btn-sm border-0 p-2 rounded-3 mb-3">RESET</button>
-                        <!-- <a href="/breathholds/new" role="button" type="button" class="btn btn-large btn-primary mt-2 rounded-2">Log This Hold</a> -->
+                    <div class="controls">
+                        <button type="button" id="start" name="start" class="myB btn btn-success btn-sm border-0 p-2 mb-3 rounded-3">START</button>
+                        <button type="button" id="stop" name="stop" class="myB btn btn-danger btn-sm border-0 p-2 rounded-3 mb-3">STOP</button>
+                        <button type="button" id="reset" name="reset" class="myB btn btn-secondary btn-sm border-0 p-2 rounded-3 mb-3">RESET</button>
                     </div>
                     <div>
                         <form action="/breathholds" class="validated-form" method="POST" novalidate>
                             <div class="text-left mt-2 mb-3">
-                                <label class="form-label mb-1 mt-1 text-white" for="comments">Comments</label>
+                                <label class="form-label mb-2 mt-1 text-white" for="comments">Comments</label>
                                 <textarea class="form-control mb-1" id="comments" rows="3" name="breathhold[comments]" type="text" required></textarea>
                                 <small id="commentsHelp" class="form-text text-muted" style="font-size: .8rem;">Say something...</small>
                             </div>
