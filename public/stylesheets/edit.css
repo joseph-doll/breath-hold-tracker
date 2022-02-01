@@ -7,16 +7,15 @@
     display: grid;
     gap: 0px;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 
-        'one two three';
-    padding: 1rem 1rem .5rem 1rem;
+    grid-template-areas: 'one two three';
+    padding: 1rem 1rem 0.5rem 1rem;
     border-bottom: 1px solid #ff4242;
     background-color: black;
 }
 .sticky {
-	position: -webkit-sticky;
-	position: sticky;
-	top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
 .nav-box:nth-child(1) {

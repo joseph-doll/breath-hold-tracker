@@ -29,6 +29,9 @@ const UserSchema = new Schema({
         type: Number,
         default: 0,
     },
+    following: {
+        type: Array,
+    }
 });
 
 UserSchema.plugin(passportLocalMongoose);

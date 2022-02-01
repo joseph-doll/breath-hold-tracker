@@ -20,7 +20,7 @@ body {
 }
 
 .noteText {
-    font-size: .7rem;
+    font-size: 0.7rem;
 }
 
 .main-container {
@@ -32,16 +32,15 @@ body {
     display: grid;
     gap: 0px;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 
-        'one two three';
-    padding: 1rem 1rem .5rem 1rem;
+    grid-template-areas: 'one two three';
+    padding: 1rem 1rem 0.5rem 1rem;
     border-bottom: 1px solid #ff4242;
     background-color: black;
 }
 .sticky {
-	position: -webkit-sticky;
-	position: sticky;
-	top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
 .nav-box:nth-child(1) {
@@ -63,6 +62,7 @@ body {
 
 .myB {
     width: 25vw;
+    max-width: 30%;
 }
 
 .dot-container {
@@ -74,7 +74,7 @@ body {
 }
 
 .square {
-    background-color: rgb(0, 0, 0);;
+    background-color: rgb(0, 0, 0);
     height: 12px;
     width: 12px;
     margin: 2px;

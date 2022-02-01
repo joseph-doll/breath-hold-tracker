@@ -1,60 +1,58 @@
 <% layout('layouts/boilerplate') %>
-<div class="main-container">
-    <nav class="grid-nav sticky">
-    <% if(!currentUser) {%>
-        <div class="nav-box">
-            <a href="/login">
-                <img src="/images/user.svg" width="30px" height="30px">
-            </a>
-        </div>
-        <!-- <div class="nav-box">
+    <div class="main-container">
+        <nav class="grid-nav sticky">
+            <% if(!currentUser) {%>
+                <div class="nav-box">
+                    <a href="/login">
+                        <img src="/images/user.svg" width="30px" height="30px">
+                    </a>
+                </div>
+                <!-- <div class="nav-box">
             <a href="/register" style="color:rgb(148, 148, 148);">Register</a>
         </div> -->
-    <% } else {%> 
-        <div class="nav-box">
-            <a href="/logout">
-                <img src="/images/user.svg" width="30px" height="30px">
-            </a>
-        </div>
-    <% } %>
-        <div class="nav-box">
-            <a href="/">
-                <img src="/images/newlogo.png" width="auto" height="30px">
-            </a>
-        </div>
-        <div class="nav-box">
-            <a href="/breathholds/timer">
-                <img src="/images/greyrediconplus.svg" width="auto" height="30px">
-            </a>
-        </div>
-    </nav>
-    <div class="container-fluid">
-        <h4 class="text-center mt-3">EDIT</h4>
-            <form action="/breathholds/<%= breathhold._id %>?_method=PUT" method="POST" class="validated-form" novalidate>
-                <div class="mb-1">
-                    <label class="form-label mb-1 mt-1" for="name">Name</label>
-                    <input class="form-control" type="text" id="name" name="breathhold[name]" value="<%= breathhold.name %>" required/>
-                </div>
+                <% } else {%>
+                    <div class="nav-box">
+                        <a href="/logout">
+                            <img src="/images/user.svg" width="30px" height="30px">
+                        </a>
+                    </div>
+                    <% } %>
+                        <div class="nav-box">
+                            <a href="/">
+                                <img src="/images/newlogo.png" width="auto" height="30px">
+                            </a>
+                        </div>
+                        <div class="nav-box">
+                            <a href="/breathholds/timer">
+                                <img src="/images/greyrediconplus.svg" width="auto" height="30px">
+                            </a>
+                        </div>
+        </nav>
+        <div class="container-fluid">
+            <h4 class="text-center mt-3">EDIT</h4>
+            <form action="/breathholds/<%= breathhold._id %>?_method=PUT" method="POST" class="validated-form"
+                novalidate>
                 <div class="mb-1">
                     <label class="form-label mb-1 mt-1" for="duration">Duration</label>
-                    <input class="form-control" type="text" id="duration" name="breathhold[duration]" value="<%= breathhold.duration %>" required/>
+                    <input class="form-control" type="text" id="duration" name="breathhold[duration]"
+                        value="<%= breathhold.duration %>" required />
                     <div id="durationHelp" class="form-text text-muted" style="font-size: .8rem;">Seconds</div>
                 </div>
                 <div class="mb-1">
                     <label class="form-label mb-1 mt-1" for="notes">Notes</label>
-                    <textarea class="form-control" type="text" id="notes" name="breathhold[notes]" value="<%= breathhold.notes %>"/></textarea>
+                    <textarea class="form-control" type="text" id="notes" name="breathhold[notes]" /><%= breathhold.notes %> </textarea>
+                    <div id="notesHelp" class="form-text text-muted" style="font-size: .8rem;">For personal use; won't be displayed to other users</div>
                 </div>
                 <div class="mb-1">
                     <label class="form-label mb-1 mt-1" for="comments">Comments</label>
-                    <textarea class="form-control" type="text" id="comments" name="breathhold[comments]" value="<%= breathhold.comments %>" required/></textarea
+                    <textarea class="form-control" type="text" id="comments" name="breathhold[comments]" required /><%= breathhold.comments %></textarea>
                 </div>
-
                 <div class="d-grid gap-2 pb-3 mt-3">
                     <button class="btn btn-danger mt-2">SUBMIT CHANGES</button>
                 </div>
             </form>
             <div class="card border-0 mb-3 mt-1">
                 <a href="/breathholds/<%= breathhold._id %>" role="button" class="btn btn-secondary btn-sm">CANCEL</a>
-            </div>       
+            </div>
+        </div>
     </div>
-</div>

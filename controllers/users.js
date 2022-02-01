@@ -8,15 +8,22 @@ module.exports.register = async (req, res, next) => {
     try {
         const { email, username, password, name } = req.body;
         const user = new User({ email, username, name });
+        user.following.push(username);
         const registeredUser = await User.register(user, password);
-        req.login(registeredUser, err => {
-            if(err) return next(err);
-            req.flash('success', `Welcome to Hold It ${req.body.name.split(" ")[0]}!`);
+        req.login(registeredUser, (err) => {
+            if (err) return next(err);
+            req.flash(
+                'success',
+                `Welcome to Hold It ${req.body.name.split(' ')[0]}!`
+            );
             res.redirect('/breathholds');
         });
-    } catch(e) {
-        if (e.code === 11000){
-            req.flash('error', 'A user with that email address has already been registered.')
+    } catch (e) {
+        if (e.code === 11000) {
+            req.flash(
+                'error',
+                'A user with that email address has already been registered.'
+            );
         } else {
             req.flash('error', e.message);
         }
@@ -30,7 +37,7 @@ module.exports.renderLogin = (req, res) => {
 
 module.exports.login = (req, res) => {
     const { name } = req.user;
-    req.flash('success', `Good luck with your holds ${ name.split(" ")[0]}!`);
+    req.flash('success', `Good luck with your holds ${name.split(' ')[0]}!`);
     const redirectUrl = req.session.returnTo || '/breathholds';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
@@ -39,6 +46,6 @@ module.exports.login = (req, res) => {
 module.exports.logout = (req, res) => {
     const { name } = req.user;
     req.logout();
-    req.flash('success', `See ya next time ${name.split(" ")[0]}!`);
+    req.flash('success', `See ya next time ${name.split(' ')[0]}!`);
     res.redirect('/login');
 };

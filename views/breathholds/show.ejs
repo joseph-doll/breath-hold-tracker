@@ -10,46 +10,53 @@
                 <!-- <div class="nav-box">
                     <a href="/register" style="color:rgb(148, 148, 148);">Register</a>
                 </div> -->
-            <% } else {%> 
-                <div class="nav-box">
-                    <a href="/logout">
-                        <img src="/images/user.svg" width="30px" height="30px">
-                    </a>
-                </div>
-            <% } %>
-                <div class="nav-box">
-                    <a href="/">
-                        <img src="/images/newlogo.png" width="auto" height="30px">
-                    </a>
-                </div>
-                <div class="nav-box">
-                    <a href="/breathholds/timer">
-                        <img src="/images/greyrediconplus.svg" width="auto" height="30px">
-                    </a>
-                </div>
-            </nav>
-            <div class="container-fluid mt-3">
-                <h4 class="text-center mb-3">DETAILS</h4>
-                <div class="mb-4">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-black text-light border-secondary">Name: <%= breathhold.name %> </li>
-                    <li class="list-group-item bg-black text-light border-secondary">Duration: <%= breathhold.duration %> seconds </li>
+                <% } else {%>
+                    <div class="nav-box">
+                        <a href="/logout">
+                            <img src="/images/user.svg" width="30px" height="30px">
+                        </a>
+                    </div>
+                    <% } %>
+                        <div class="nav-box">
+                            <a href="/">
+                                <img src="/images/newlogo.png" width="auto" height="30px">
+                            </a>
+                        </div>
+                        <div class="nav-box">
+                            <a href="/breathholds/timer">
+                                <img src="/images/greyrediconplus.svg" width="auto" height="30px">
+                            </a>
+                        </div>
+        </nav>
+        <div class="container-fluid mt-3">
+            <h4 class="text-center mb-3">DETAILS</h4>
+            <div class="mb-4">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-black text-light border-secondary">Name: <%= breathhold.name %>
+                    </li>
+                    <li class="list-group-item bg-black text-light border-secondary">Duration: <%= breathhold.duration
+                            %> seconds </li>
                     <!-- <li class="list-group-item bg-black text-light border-secondary">Notes: <%= breathhold.notes %> </li> -->
-                    <li class="list-group-item bg-black text-light border-secondary">Comments: <%= breathhold.comments %></li>
-                    <li class="list-group-item bg-black text-light border-secondary">Created: <%= breathhold.createdAt.toLocaleString('en-US') %> </li>
-                    </ul>
-                </div>
-                
-                <div class="card border-0 mb-3 pb-3 bg-black">
-                    <a href="/breathholds" role="button" class="btn btn-primary btn-sm mb-2">BACK TO HOLDS</a>
-                    <% if (currentUser && breathhold.author.equals(currentUser._id)) {%>
-                    <a href="/breathholds/<%= breathhold._id %>/edit" role="button" class="btn btn-success btn-sm">EDIT THIS HOLD</a>
+                    <li class="list-group-item bg-black text-light border-secondary">Comments: <%= breathhold.comments
+                            %>
+                    </li>
+                    <li class="list-group-item bg-black text-light border-secondary">Date: <%=
+                            breathhold.createdAt.toLocaleString('en-US') %>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card border-0 mb-3 pb-3 bg-black">
+                <a href="/breathholds" role="button" class="btn btn-primary btn-sm mb-2">BACK TO HOLDS</a>
+                <% if (currentUser && breathhold.author.equals(currentUser._id)) {%>
+                    <a href="/breathholds/<%= breathhold._id %>/edit" role="button" class="btn btn-success btn-sm">EDIT
+                        THIS HOLD</a>
                     <form action="/breathholds/<%= breathhold._id %>?_method=DELETE" method="POST">
                         <div class="d-grid gap-2 pb-3">
                             <button class="btn btn-danger btn-sm mt-2">DELETE THIS HOLD</button>
                         </div>
                     </form>
-                </div>
-                <% } %>
             </div>
+            <% } %>
+        </div>
     </div>

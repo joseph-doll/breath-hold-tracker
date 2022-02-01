@@ -1,75 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/timer.css">
     <title>HOLD IT! Timer</title>
 </head>
-    <body class="d-flex flex-column vh-100 bg-black">
-        <div class="main-container">
-            <nav class="grid-nav sticky">
-                <% if(!currentUser) {%>
-                    <div class="nav-box">
-                        <a href="/login">
-                            <img src="/images/user.svg" width="30px" height="30px">
-                        </a>
-                    </div>
-                    <!-- <div class="nav-box">
+
+<body class="d-flex flex-column vh-100 bg-black">
+    <div class="main-container">
+        <nav class="grid-nav sticky">
+            <% if(!currentUser) {%>
+                <div class="nav-box">
+                    <a href="/login">
+                        <img src="/images/user.svg" width="30px" height="30px">
+                    </a>
+                </div>
+                <!-- <div class="nav-box">
                         <a href="/register" style="color:rgb(148, 148, 148);">Register</a>
                     </div> -->
-                <% } else {%> 
+                <% } else {%>
                     <div class="nav-box">
                         <a href="/logout">
                             <img src="/images/user.svg" width="30px" height="30px">
                         </a>
                     </div>
-                <% } %>
-                    <div class="nav-box">
-                        <a href="/">
-                            <img src="/images/newlogo.png" width="auto" height="30px">
-                        </a>
-                    </div>
-                    <div class="nav-box">
-                        <a href="/breathholds/timer">
-                            <img src="/images/greyrediconplus.svg" width="auto" height="30px">
-                        </a>
-                    </div>
-                </nav>
-            <div class="dot-container" id="dotContainer"></div>
-            <div class="px-3">
-                <div class="num-display text-center">
-                    <span id="minute" class="timer-nums">0</span><span id="minText" class="timer-text">MINUTES</span>
-                    <span id="second" class="timer-nums sec">0</span><span id="secText" class="timer-text">SECONDS</span>
+                    <% } %>
+                        <div class="nav-box">
+                            <a href="/">
+                                <img src="/images/newlogo.png" width="auto" height="30px">
+                            </a>
+                        </div>
+                        <div class="nav-box">
+                            <a href="/breathholds/timer">
+                                <img src="/images/greyrediconplus.svg" width="auto" height="30px">
+                            </a>
+                        </div>
+        </nav>
+        <div class="dot-container" id="dotContainer"></div>
+        <div class="px-3">
+            <div class="num-display text-center">
+                <span id="minute" class="timer-nums">0</span><span id="minText" class="timer-text">MINUTES</span>
+                <span id="second" class="timer-nums sec">0</span><span id="secText" class="timer-text">SECONDS</span>
+            </div>
+            <div name="timer_controls">
+                <div class="controls">
+                    <button type="button" id="start" name="start"
+                        class="myB btn btn-success btn-sm border-0 p-2 mb-3 rounded-3">START</button>
+                    <button type="button" id="stop" name="stop"
+                        class="myB btn btn-danger btn-sm border-0 p-2 rounded-3 mb-3">STOP</button>
+                    <button type="button" id="reset" name="reset"
+                        class="myB btn btn-secondary btn-sm border-0 p-2 rounded-3 mb-3">RESET</button>
                 </div>
-                <div name="timer_controls">
-                    <div class="controls">
-                        <button type="button" id="start" name="start" class="myB btn btn-success btn-sm border-0 p-2 mb-3 rounded-3">START</button>
-                        <button type="button" id="stop" name="stop" class="myB btn btn-danger btn-sm border-0 p-2 rounded-3 mb-3">STOP</button>
-                        <button type="button" id="reset" name="reset" class="myB btn btn-secondary btn-sm border-0 p-2 rounded-3 mb-3">RESET</button>
-                    </div>
-                    <div>
-                        <form action="/breathholds" class="validated-form" method="POST" novalidate>
-                            <div class="text-left mt-2 mb-3">
-                                <label class="form-label mb-2 mt-1 text-white" for="comments">Comments</label>
-                                <textarea class="form-control mb-1" id="comments" rows="3" name="breathhold[comments]" type="text" required></textarea>
-                                <small id="commentsHelp" class="form-text text-muted" style="font-size: .8rem;">Say something...</small>
-                            </div>
-                            <input class="form-control" type="text" value="0" id="duration" name="breathhold[duration]" id="duration" style="display: none;">
-                            <div class="d-grid gap-2 pb-3">
-                                <button class="btn btn-primary">SUBMIT HOLD</button>
-                            </div>
-                            <!-- <button class="btn btn-primary btn-sm border-0 p-2 rounded-3">LOG HOLD</button>  -->
-                        </form>
-                    </div>
+                <div>
+                    <form action="/breathholds" class="validated-form" method="POST" novalidate>
+                        <div class="text-left mt-2 mb-3">
+                            <label class="form-label mb-2 mt-1 text-white" for="comments">Comments</label>
+                            <textarea class="form-control mb-1" id="comments" rows="3" name="breathhold[comments]"
+                                type="text" required></textarea>
+                            <small id="commentsHelp" class="form-text text-muted" style="font-size: .8rem;">Say
+                                something...</small>
+                        </div>
+                        <input class="form-control" type="text" value="0" id="duration" name="breathhold[duration]"
+                            id="duration" style="display: none;">
+                        <div class="d-grid gap-2 pb-3">
+                            <button class="btn btn-primary">SUBMIT HOLD</button>
+                        </div>
+                        <!-- <button class="btn btn-primary btn-sm border-0 p-2 rounded-3">LOG HOLD</button>  -->
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
 
     <!-- <footer class="footer bg-dark py-2 mt-auto">
@@ -77,8 +86,11 @@
             <span class="text-muted">&copyHOLD IT! 2021</span>
         </div>
     </footer> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <script src="/javascripts/validateForms.js"></script>
     <script src="/javascripts/timer.js"></script>
 </body>
+
 </html>

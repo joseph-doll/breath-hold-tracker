@@ -1,22 +1,22 @@
 <% layout('layouts/boilerplate') %>
-<div class="container-fluid bg-black">
-    <div class="text-center mt-3">
-        <a href="/"><img src="/images/newlogo.png" class="mb-3 mt-3" style="max-width: 98%; height: auto;"></a>
+    <div class="container-fluid bg-black">
+        <div class="text-center mt-3">
+            <a href="/"><img src="/images/newlogo.png" class="mb-3 mt-3" style="max-width: 98%; height: auto;"></a>
+        </div>
+        <h4 class="text-center mt-3">LOGIN</h4>
+        <div class="col-md-6 offset-md-3 mt-3">
+            <form action="/login" method="POST" class="validated-form" novalidate>
+                <div class="mb-1">
+                    <label class="form-label mb-1 mt-1" for="username">Username</label>
+                    <input class="form-control" type="text" id="username" name="username" required />
+                </div>
+                <div class="mb-1">
+                    <label class="form-label mb-1 mt-1" for="password">Password</label>
+                    <input class="form-control" type="password" id="password" name="password" required />
+                </div>
+                <div class="d-grid gap-2 pb-3 mt-5">
+                    <button class="btn btn-primary">LOGIN</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <h4 class="text-center mt-3">LOGIN</h4>
-    <div class="col-md-6 offset-md-3 mt-3">
-        <form action="/login" method="POST" class="validated-form" novalidate>
-            <div class="mb-1">
-                <label class="form-label mb-1 mt-1" for="username" >Username</label>
-                <input class="form-control" type="text" id="username" name="username" required/>
-            </div>
-            <div class="mb-1">
-                <label class="form-label mb-1 mt-1" for="password" >Password</label>
-                <input class="form-control" type="password" id="password" name="password" required/>
-            </div>
-            <div class="d-grid gap-2 pb-3 mt-5">
-                <button class="btn btn-primary">LOGIN</button>
-            </div>
-        </form>
-    </div>
-</div>
