@@ -1,5 +1,7 @@
 body {
     font-family: 'Encode Sans', sans-serif;
+    background-color: black;
+    color: white;
 }
 
 .timer-nums {
@@ -83,4 +85,14 @@ body {
 
 .num-display {
     padding-bottom: 1rem;
+}
+
+.user-status-text {
+    color: white;
+    font-size: 0.625rem;
+    text-decoration: none;
+}
+
+.user-nav-icon {
+    padding-left: .25rem;
 }

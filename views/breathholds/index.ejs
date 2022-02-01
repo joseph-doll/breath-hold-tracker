@@ -34,7 +34,7 @@
 
                     <div class="nav-box">
                         <a href="/logout">
-                            <img src="/images/user.svg" width="25px" height="25px" style="padding-left: .25rem">
+                            <img class="user-nav-icon" src="/images/user.svg" width="25px" height="25px">
                         </a>
                         <p class="user-status-text">Logout</p>
                     </div>
@@ -58,95 +58,100 @@
         <div class="container-fluid">
             <!-- Holds -->
             <% if(isFollowing.length < 2) {%>
-                <span> You aren't following anyone (NEED TO STYLE)</span> 
-                <% } else { %> 
-            <% for (let breathhold of breathholds) {%>
-                <% if (isFollowing.includes(breathhold.username)) {%>
-                    <div class="grid-container">
+                <p class="placeholder"> You aren't logged in (PLACEHOLDER TEXT)</p>
+                <% } else { %>
+                    <% for (let breathhold of breathholds) {%>
+                        <% if (isFollowing.includes(breathhold.username)) {%>
+                            <div class="grid-container">
 
-                        <!-- Profile-Icon -->
-                        <div class="profile-icon">
-                            <% if (breathhold.name==="Joe Doll" ) { %>
-                                <img src="/images/profileiconblue.svg" alt="">
-                                <% } else if (breathhold.name==="JJ Saavedra" ) { %>
-                                    <img src="/images/profileiconyellow.svg" alt="">
-                                    <% } else if (breathhold.name==="Jason Wolfe" ) { %>
-                                        <img src="/images/profileiconpurple.svg" alt="">
-                                        <% } else { %>
-                                            <img src="/images/profileiconorange.svg" alt="">
-                                            <% } %>
-                        </div>
+                                <!-- Profile-Icon -->
+                                <div class="profile-icon">
+                                    <% if (breathhold.name==="Joe Doll" ) { %>
+                                        <img src="/images/profileiconblue.svg" alt="">
+                                        <% } else if (breathhold.name==="JJ Saavedra" ) { %>
+                                            <img src="/images/profileiconyellow.svg" alt="">
+                                            <% } else if (breathhold.name==="Jason Wolfe" ) { %>
+                                                <img src="/images/profileiconpurple.svg" alt="">
+                                                <% } else { %>
+                                                    <img src="/images/profileiconorange.svg" alt="">
+                                                    <% } %>
+                                </div>
 
-                        <!-- Name -->
-                        <div class="name">
-                            <p>
-                                <%= `${breathhold.name}`%>
-                            </p>
-                            <p style="color: #4b4b4b;">@<%= `${breathhold.username}` %>
-                            </p>
-                        </div>
-
-                        <!-- Time -->
-                        <div class="time">
-                            <p>
-                                <%= `${breathhold.createdAt.toString().slice(4,15)}` %>
-                            </p>
-                        </div>
-
-                        <!-- Trend -->
-                        <div class="trend">
-                            <% if (breathhold.duration> breathhold.prevRecord) {%>
-                                <p style="color: #ffb446;"><img src="/images/fire.svg"
-                                        style="height: .7rem; width: auto; padding-right: .5rem;" alt="">NEW RECORD</p>
-                                <% } else if(breathhold.duration> breathhold.prevAvg) { %>
-                                    <p style="color: #00ff85;"><img src="/images/uparrow.svg"
-                                            style="height: .7rem; width: auto; padding-right: .5rem;" alt="">
-                                        <%= breathhold.avgDiff.toFixed() %>% FROM AVG
+                                <!-- Name -->
+                                <div class="name">
+                                    <p>
+                                        <%= `${breathhold.name}`%>
                                     </p>
-                                    <% } else if (breathhold.duration < breathhold.prevAvg) { %>
-                                        <p style="color: #ff4242;"><img src="/images/downarrow.svg"
-                                                style="height: .7rem; width: auto; padding-right: .5rem;" alt="">
-                                            <%= breathhold.avgDiff.toFixed() %>% FROM AVG
-                                        </p>
-                                        <% } else {%>
-                                            <p style="color:rgb(148, 148, 148);"><img src="/images/nochange.svg" alt=""
-                                                    style="height: .7rem; width: auto; padding-right: .5rem;">NO CHANGE
+                                    <p style="color: #4b4b4b;">@<%= `${breathhold.username}` %>
+                                    </p>
+                                </div>
+
+                                <!-- Time -->
+                                <div class="time">
+                                    <p>
+                                        <%= `${breathhold.createdAt.toString().slice(4,15)}` %>
+                                    </p>
+                                </div>
+
+                                <!-- Trend -->
+                                <div class="trend">
+                                    <% if (breathhold.duration> breathhold.prevRecord) {%>
+                                        <p style="color: #ffb446;"><img src="/images/fire.svg"
+                                                style="height: .7rem; width: auto; padding-right: .5rem;" alt="">NEW
+                                            RECORD</p>
+                                        <% } else if(breathhold.duration> breathhold.prevAvg) { %>
+                                            <p style="color: #00ff85;"><img src="/images/uparrow.svg"
+                                                    style="height: .7rem; width: auto; padding-right: .5rem;" alt="">
+                                                <%= breathhold.avgDiff.toFixed() %>% FROM AVG
                                             </p>
-                                            <% } %>
-                        </div>
+                                            <% } else if (breathhold.duration < breathhold.prevAvg) { %>
+                                                <p style="color: #ff4242;"><img src="/images/downarrow.svg"
+                                                        style="height: .7rem; width: auto; padding-right: .5rem;"
+                                                        alt="">
+                                                    <%= breathhold.avgDiff.toFixed() %>% FROM AVG
+                                                </p>
+                                                <% } else {%>
+                                                    <p style="color:rgb(148, 148, 148);"><img src="/images/nochange.svg"
+                                                            alt=""
+                                                            style="height: .7rem; width: auto; padding-right: .5rem;">NO
+                                                        CHANGE
+                                                    </p>
+                                                    <% } %>
+                                </div>
 
-                        <!-- Stats -->
-                        <div class="stats">
-                            <div style="display: flex; flex-direction: column; width:fit-content; align-items: center;">
-                                <p>Holds: <%= breathhold.holdNumber %>
-                                </p>
-                                <p>Avg: <%= breathhold.currentAvg %>
-                                </p>
-                                <p>Record: <%= breathhold.recordHold %>
-                                </p>
+                                <!-- Stats -->
+                                <div class="stats">
+                                    <div
+                                        style="display: flex; flex-direction: column; width:fit-content; align-items: center;">
+                                        <p>Holds: <%= breathhold.holdNumber %>
+                                        </p>
+                                        <p>Avg: <%= breathhold.currentAvg %>
+                                        </p>
+                                        <p>Record: <%= breathhold.recordHold %>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Comments -->
+                                <div class="comments">
+                                    <p>
+                                        <%= `${breathhold.comments}`%>
+                                    </p>
+                                </div>
+
+                                <!-- Duration -->
+                                <div class="duration">
+                                    <a href="/breathholds/<%= breathhold._id %>" class="duration-text">
+                                        <p>
+                                            <%= `${breathhold.duration}`%> seconds
+                                        </p>
+                                    </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Comments -->
-                        <div class="comments">
-                            <p>
-                                <%= `${breathhold.comments}`%>
-                            </p>
-                        </div>
-
-                        <!-- Duration -->
-                        <div class="duration">
-                            <a href="/breathholds/<%= breathhold._id %>" class="duration-text">
-                                <p>
-                                    <%= `${breathhold.duration}`%> seconds
-                                </p>
-                            </a>
-                            </a>
-                        </div>
-                    </div>
-                    <% } %> 
-                    <% } %>
-                <% } %>
+                            <% } %>
+                                <% } %>
+                                    <% } %>
         </div>
         <script src="/javascripts/validateForms.js"></script>
 </body>

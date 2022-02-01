@@ -134,3 +134,11 @@ body {
     color: white;
     font-size: 1.215rem;
 }
+
+.placeholder {
+    margin-top: 1rem;
+}
+
+.user-nav-icon {
+    padding-left: .15rem;
+}

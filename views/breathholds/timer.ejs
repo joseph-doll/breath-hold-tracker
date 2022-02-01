@@ -10,31 +10,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
     <link rel="stylesheet" href="/stylesheets/timer.css">
     <title>HOLD IT! Timer</title>
 </head>
-
-<body class="d-flex flex-column vh-100 bg-black">
+<body>
     <div class="main-container">
         <nav class="grid-nav sticky">
             <% if(!currentUser) {%>
                 <div class="nav-box">
                     <a href="/login">
-                        <img src="/images/user.svg" width="30px" height="30px">
+                        <img src="/images/user.svg" width="25px" height="25px">
                     </a>
+                    <p class="user-status-text">Login</p>
                 </div>
-                <!-- <div class="nav-box">
-                        <a href="/register" style="color:rgb(148, 148, 148);">Register</a>
-                    </div> -->
                 <% } else {%>
+
                     <div class="nav-box">
                         <a href="/logout">
-                            <img src="/images/user.svg" width="30px" height="30px">
+                            <img class="user-nav-icon" src="/images/user.svg" width="25px" height="25px">
                         </a>
+                        <p class="user-status-text">Logout</p>
                     </div>
                     <% } %>
                         <div class="nav-box">
-                            <a href="/">
+                            <a href="/breathholds">
                                 <img src="/images/newlogo.png" width="auto" height="30px">
                             </a>
                         </div>
