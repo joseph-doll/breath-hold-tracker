@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
@@ -36,7 +36,6 @@ db.once('open', () => {
     console.log('Database connected');
 });
 
-
 const app = express();
 
 app.engine('ejs', ejsMate);
@@ -45,9 +44,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-app.use(mongoSanitize({ replaceWith: '_'}));
+app.use(mongoSanitize({ replaceWith: '_' }));
 
-const secret = process.env.SECRET || 'flapjacksforfrank'
+const secret = process.env.SECRET || 'flapjacksforfrank';
 
 const store = new MongoStore({
     url: dbUrl,
@@ -55,7 +54,7 @@ const store = new MongoStore({
     touchAfter: 24 * 60 * 60,
 });
 
-store.on('error', function(e) {
+store.on('error', function (e) {
     console.log('session store error', e);
 });
 
@@ -69,14 +68,13 @@ const sessionConfig = {
         //secure: true,
         expires: Date.now() + 1000 + 60 * 60 * 60 * 24 * 7,
         maxAge: 1000 + 60 * 60 * 60 * 24 * 7,
-        
-    }
+    },
 };
 app.use(session(sessionConfig));
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()))
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -87,10 +85,8 @@ app.use((req, res, next) => {
             return res.redirect(301, 'https://www.holditin.com');
         if (req.headers['x-forwarded-proto'] !== 'https')
             return res.redirect('https://' + req.headers.host + req.url);
-        else
-            return next();
-    } else
-        return next();
+        else return next();
+    } else return next();
 });
 
 app.use(flash());
@@ -99,27 +95,25 @@ app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();
-})
+});
 app.use(helmet());
 
 //helmet stuff
 const scriptSrcUrls = [
-    "https://stackpath.bootstrapcdn.com/",
-    "https://kit.fontawesome.com/",
-    "https://cdnjs.cloudflare.com/",
-    "https://cdn.jsdelivr.net",
+    'https://stackpath.bootstrapcdn.com/',
+    'https://kit.fontawesome.com/',
+    'https://cdnjs.cloudflare.com/',
+    'https://cdn.jsdelivr.net',
 ];
 const styleSrcUrls = [
-    "https://kit-free.fontawesome.com/",
-    "https://stackpath.bootstrapcdn.com/",
-    "https://fonts.googleapis.com/",
-    "https://use.fontawesome.com/",
-    "https://cdn.jsdelivr.net",
+    'https://kit-free.fontawesome.com/',
+    'https://stackpath.bootstrapcdn.com/',
+    'https://fonts.googleapis.com/',
+    'https://use.fontawesome.com/',
+    'https://cdn.jsdelivr.net',
 ];
 const connectSrcUrls = [];
-const fontSrcUrls = [
-    "https://fonts.gstatic.com",
-];
+const fontSrcUrls = ['https://fonts.gstatic.com'];
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
@@ -127,13 +121,13 @@ app.use(
             connectSrc: ["'self'", ...connectSrcUrls],
             scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
             styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
-            workerSrc: ["'self'", "blob:"],
+            workerSrc: ["'self'", 'blob:'],
             objectSrc: [],
             imgSrc: [
                 "'self'",
-                "blob:",
-                "data:",
-                "https://images.unsplash.com/",
+                'blob:',
+                'data:',
+                'https://images.unsplash.com/',
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
