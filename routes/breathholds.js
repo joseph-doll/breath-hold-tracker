@@ -6,7 +6,7 @@ const breathholds = require('../controllers/breathholds');
 
 router
     .route('/')
-    .get(catchAsync(breathholds.index))
+    .get(isLoggedIn, catchAsync(breathholds.index))
     .post(
         isLoggedIn,
         validateBreathhold,

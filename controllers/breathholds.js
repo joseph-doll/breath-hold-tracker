@@ -4,8 +4,13 @@ const User = require('../models/user');
 
 module.exports.index = async (req, res) => {
   const breathholds = await BreathHold.find({}).sort({ createdAt: -1 });
-  const isFollowing = req.user.following;
-  res.render('breathholds/index', { breathholds , isFollowing });
+  if(req.user === undefined) {
+    const isFollowing = [];
+    res.render('breathholds/index', { breathholds, isFollowing });
+  } else {
+    const isFollowing = req.user.following;
+    res.render('breathholds/index', { breathholds , isFollowing });
+  }
 };
 
 module.exports.timer = (req, res) => {
