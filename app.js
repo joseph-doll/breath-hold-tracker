@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
+  require('dotenv').config();
 }
 
 const express = require('express');
@@ -22,10 +22,10 @@ const localDb = 'mongodb://127.0.0.1:27017/breath-hold-tracker';
 const MongoStore = require('connect-mongo')(session);
 
 mongoose.connect(dbUrl, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const db = mongoose.connection;
@@ -33,7 +33,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 db.once('open', () => {
-    console.log('Database connected');
+  console.log('Database connected');
 });
 
 const app = express();
@@ -49,26 +49,26 @@ app.use(mongoSanitize({ replaceWith: '_' }));
 const secret = process.env.SECRET || 'flapjacksforfrank';
 
 const store = new MongoStore({
-    url: dbUrl,
-    secret,
-    touchAfter: 24 * 60 * 60,
+  url: dbUrl,
+  secret,
+  touchAfter: 24 * 60 * 60,
 });
 
 store.on('error', function (e) {
-    console.log('session store error', e);
+  console.log('session store error', e);
 });
 
 const sessionConfig = {
-    store,
-    secret,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        httpOnly: true,
-        //secure: true,
-        expires: Date.now() + 1000 + 60 * 60 * 60 * 24 * 7,
-        maxAge: 1000 + 60 * 60 * 60 * 24 * 7,
-    },
+  store,
+  secret,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    //secure: true,
+    expires: Date.now() + 1000 + 60 * 60 * 60 * 24 * 7,
+    maxAge: 1000 + 60 * 60 * 60 * 24 * 7,
+  },
 };
 app.use(session(sessionConfig));
 
@@ -80,77 +80,76 @@ passport.deserializeUser(User.deserializeUser());
 
 //forces https
 app.use((req, res, next) => {
-    if (process.env.NODE_ENV === 'production') {
-        if (req.headers.host === 'holditin.com')
-            return res.redirect(301, 'https://www.holditin.com');
-        if (req.headers['x-forwarded-proto'] !== 'https')
-            return res.redirect('https://' + req.headers.host + req.url);
-        else return next();
-    } else return next();
+  if (process.env.NODE_ENV === 'production') {
+    if (req.headers.host === 'holditin.com')
+      return res.redirect(301, 'https://www.holditin.com');
+    if (req.headers['x-forwarded-proto'] !== 'https')
+      return res.redirect('https://' + req.headers.host + req.url);
+    else return next();
+  } else return next();
 });
 
 app.use(flash());
 app.use((req, res, next) => {
-    res.locals.currentUser = req.user;
-    res.locals.success = req.flash('success');
-    res.locals.error = req.flash('error');
-    next();
+  res.locals.currentUser = req.user;
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
 });
 app.use(helmet());
 
 //helmet stuff
 const scriptSrcUrls = [
-    'https://stackpath.bootstrapcdn.com/',
-    'https://kit.fontawesome.com/',
-    'https://cdnjs.cloudflare.com/',
-    'https://cdn.jsdelivr.net',
+  'https://stackpath.bootstrapcdn.com/',
+  'https://kit.fontawesome.com/',
+  'https://cdnjs.cloudflare.com/',
+  'https://cdn.jsdelivr.net',
 ];
 const styleSrcUrls = [
-    'https://kit-free.fontawesome.com/',
-    'https://stackpath.bootstrapcdn.com/',
-    'https://fonts.googleapis.com/',
-    'https://use.fontawesome.com/',
-    'https://cdn.jsdelivr.net',
+  'https://kit-free.fontawesome.com/',
+  'https://stackpath.bootstrapcdn.com/',
+  'https://fonts.googleapis.com/',
+  'https://use.fontawesome.com/',
+  'https://cdn.jsdelivr.net',
 ];
 const connectSrcUrls = [];
 const fontSrcUrls = ['https://fonts.gstatic.com'];
 app.use(
-    helmet.contentSecurityPolicy({
-        directives: {
-            defaultSrc: [],
-            connectSrc: ["'self'", ...connectSrcUrls],
-            scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
-            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
-            workerSrc: ["'self'", 'blob:'],
-            objectSrc: [],
-            imgSrc: [
-                "'self'",
-                'blob:',
-                'data:',
-                'https://images.unsplash.com/',
-            ],
-            fontSrc: ["'self'", ...fontSrcUrls],
-        },
-    })
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: [],
+      connectSrc: ["'self'", ...connectSrcUrls],
+      scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+      styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+      workerSrc: ["'self'", 'blob:'],
+      objectSrc: [],
+      imgSrc: ["'self'", 'blob:', 'data:', 'https://images.unsplash.com/'],
+      fontSrc: ["'self'", ...fontSrcUrls],
+    },
+  })
 );
 
 app.use('/', userRoutes);
 app.use('/breathholds', breathholdRoutes);
 app.get('/', (req, res) => {
+  if (req.user) {
+    res.redirect('/breathholds/following');
+  } else {
     res.render('home');
+  }
 });
 
 app.all('*', (req, res, next) => {
-    next(new ExpressError('Page Not Found', 404));
+  next(new ExpressError('Page Not Found', 404));
 });
 
 app.use((err, req, res, next) => {
-    const { statusCode = 500, message = 'Something went wrong' } = err;
-    if (!err.message) err.message = 'Oh no, something went wrong';
-    res.status(statusCode).render('error', { err });
+  const { statusCode = 500, message = 'Something went wrong' } = err;
+  if (!err.message) err.message = 'Oh no, something went wrong';
+  res.status(statusCode).render('error', { err });
 });
 
 const port = process.env.PORT;
 app.listen(port, () => {
-    console.log(`Serving on port ${port}`);
+  console.log(`Serving on port ${port}`);
 });
