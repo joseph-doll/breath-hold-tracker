@@ -3,6 +3,7 @@ const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const passport = require('passport');
 const users = require('../controllers/users');
+const { isLoggedIn } = require('../middleware')
 
 router
     .route('/register')
@@ -21,5 +22,7 @@ router
     );
 
 router.get('/logout', users.logout);
+
+router.get('/profile', isLoggedIn, users.profile);
 
 module.exports = router;

@@ -17,32 +17,31 @@
 <body>
     <div class="main-container">
         <nav class="grid-nav sticky">
-            <% if(!currentUser) {%>
-                <div class="nav-box">
-                    <a href="/login">
-                        <img src="/images/user.svg" width="25px" height="25px">
-                    </a>
-                    <p class="user-status-text">Login</p>
-                </div>
-                <% } else {%>
-
-                    <div class="nav-box">
-                        <a href="/logout">
-                            <img class="user-nav-icon" src="/images/user.svg" width="25px" height="25px">
-                        </a>
-                        <p class="user-status-text">Logout</p>
-                    </div>
-                    <% } %>
-                        <div class="nav-box">
-                            <a href="/breathholds">
-                                <img src="/images/newlogo.png" width="auto" height="30px">
-                            </a>
-                        </div>
-                        <div class="nav-box">
-                            <a href="/breathholds/timer">
-                                <img src="/images/greyrediconplus.svg" width="auto" height="30px">
-                            </a>
-                        </div>
+            <div class="nav-box">
+                <a href="/breathholds">
+                    <img src="/images/globe.svg" width="auto" height="30px">
+                </a>
+            </div>
+            <div class="nav-box">
+                <a href="/breathholds/following">
+                    <img src="/images/following.svg" width="auto" height="30px">
+                </a>
+            </div>
+            <div class="nav-box">
+                <a href="/">
+                    <img src="/images/newlogo.png" width="auto" height="30px">
+                </a>
+            </div>
+            <div class="nav-box">
+                <a href="/breathholds/timer">
+                    <img src="/images/greyrediconplus.svg" width="auto" height="30px">
+                </a>
+            </div>
+            <div class="nav-box">
+                <a href="/profile">
+                    <img src="/images/user.svg" width="auto" height="30px">
+                </a>
+            </div>
         </nav>
         <div class="dot-container" id="dotContainer"></div>
         <div class="px-3">

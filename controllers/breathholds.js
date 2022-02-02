@@ -4,13 +4,19 @@ const User = require('../models/user');
 
 module.exports.index = async (req, res) => {
   const breathholds = await BreathHold.find({}).sort({ createdAt: -1 });
-  if(req.user === undefined) {
+  if (req.user === undefined) {
     const isFollowing = [];
     res.render('breathholds/index', { breathholds, isFollowing });
   } else {
     const isFollowing = req.user.following;
-    res.render('breathholds/index', { breathholds , isFollowing });
+    res.render('breathholds/index', { breathholds, isFollowing });
   }
+};
+
+module.exports.following = async (req, res) => {
+  const breathholds = await BreathHold.find({}).sort({ createdAt: -1 });
+  const isFollowing = req.user.following;
+  res.render('breathholds/following', { breathholds, isFollowing });
 };
 
 module.exports.timer = (req, res) => {
@@ -18,7 +24,7 @@ module.exports.timer = (req, res) => {
 };
 
 module.exports.createTimedHold = async (req, res) => {
-  //updates User 
+  //updates User
   const { duration } = req.body.breathhold;
   const { _id } = req.user;
   await User.findByIdAndUpdate(_id, { prevHold: duration });

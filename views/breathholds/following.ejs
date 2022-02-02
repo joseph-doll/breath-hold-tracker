@@ -18,56 +18,70 @@
 <body>
     <div class="main-container">
 
-        <!-- main navigation -->
-        <nav class="grid-nav sticky">
+ <!-- main navigation -->
+ <nav class="grid-nav sticky">
+    <div class="nav-box">
+        <a href="/breathholds">
+            <img src="/images/globe.svg" width="auto" height="30px">
+        </a>
+    </div>
+    <div class="nav-box">
+        <a href="/breathholds/following">
+            <img src="/images/following.svg" width="auto" height="30px">
+        </a>
+    </div>
+    <div class="nav-box">
+        <a href="/">
+            <img src="/images/newlogo.png" width="auto" height="30px">
+        </a>
+    </div>
+    <div class="nav-box">
+        <a href="/breathholds/timer">
+            <img src="/images/greyrediconplus.svg" width="auto" height="30px">
+        </a>
+    </div>
+    <div class="nav-box">
+        <a href="/profile">
+            <img src="/images/user.svg" width="auto" height="30px">
+        </a>
+    </div>
+    <!-- <% if(!currentUser) {%>
+        <div class="nav-box">
+            <a href="/login">
+                <img src="/images/user.svg" width="25px" height="25px">
+            </a>
+            <p class="user-status-text">Login</p>
+        </div>
+        <% } else {%>
             <div class="nav-box">
-                <a href="/breathholds">
-                    <img src="/images/globe.svg" width="auto" height="30px">
+                <a href="/logout">
+                    <img class="user-nav-icon" src="/images/user.svg" width="25px" height="25px">
                 </a>
+                <p class="user-status-text">Logout</p>
             </div>
-            <div class="nav-box">
-                <a href="/breathholds/following">
-                    <img src="/images/following.svg" width="auto" height="30px">
-                </a>
-            </div>
-            <div class="nav-box">
-                <a href="/">
-                    <img src="/images/newlogo.png" width="auto" height="30px">
-                </a>
-            </div>
-            <div class="nav-box">
-                <a href="/breathholds/timer">
-                    <img src="/images/greyrediconplus.svg" width="auto" height="30px">
-                </a>
-            </div>
-            <div class="nav-box">
-                <a href="/profile">
-                    <img src="/images/user.svg" width="auto" height="30px">
-                </a>
-            </div>
-        </nav>
+            <% } %> -->
+</nav>
 
 
         <!-- Holds container -->
         <div class="container-fluid">
             <!-- Holds -->
+
             <% for (let breathhold of breathholds) {%>
-                <% if (!breathhold.isPrivate) {%>
+                <% if (isFollowing.includes(breathhold.username)) {%>
                     <div class="grid-container">
 
                         <!-- Profile-Icon -->
                         <div class="profile-icon">
-                            <!-- <a href="/stats"> -->
-                                <% if (breathhold.name==="Joe Doll" ) { %>
-                                    <img src="/images/profileiconblue.svg" alt="">
-                                    <% } else if (breathhold.name==="JJ Saavedra" ) { %>
-                                        <img src="/images/profileiconyellow.svg" alt="">
-                                        <% } else if (breathhold.name==="Jason Wolfe" ) { %>
-                                            <img src="/images/profileiconpurple.svg" alt="">
-                                            <% } else { %>
-                                                <img src="/images/profileiconorange.svg" alt="">
-                                                <% } %>
-                            <!-- </a> -->
+                            <% if (breathhold.name==="Joe Doll" ) { %>
+                                <img src="/images/profileiconblue.svg" alt="">
+                                <% } else if (breathhold.name==="JJ Saavedra" ) { %>
+                                    <img src="/images/profileiconyellow.svg" alt="">
+                                    <% } else if (breathhold.name==="Jason Wolfe" ) { %>
+                                        <img src="/images/profileiconpurple.svg" alt="">
+                                        <% } else { %>
+                                            <img src="/images/profileiconorange.svg" alt="">
+                                            <% } %>
                         </div>
 
                         <!-- Name -->
@@ -139,9 +153,8 @@
                             </a>
                         </div>
                     </div>
-                    <% } %>
-                        <% } %>
-
+                <% } %>
+            <% } %>
         </div>
         <script src="/javascripts/validateForms.js"></script>
 </body>

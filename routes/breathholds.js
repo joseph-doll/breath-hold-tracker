@@ -6,12 +6,14 @@ const breathholds = require('../controllers/breathholds');
 
 router
     .route('/')
-    .get(isLoggedIn, catchAsync(breathholds.index))
+    .get(catchAsync(breathholds.index))
     .post(
         isLoggedIn,
         validateBreathhold,
         catchAsync(breathholds.createTimedHold)
     );
+
+router.get('/following', isLoggedIn, catchAsync(breathholds.following));
 
 router.get('/timer', isLoggedIn, breathholds.timer);
 

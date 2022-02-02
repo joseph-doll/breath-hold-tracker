@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@300&family=Encode+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <title>Holds</title>
+</head>
+
+<body>
+    <div class="main-container">
+
+        <!-- main navigation -->
+        <nav class="grid-nav sticky">
+            <div class="nav-box">
+                <a href="/breathholds">
+                    <img src="/images/globe.svg" width="auto" height="30px">
+                </a>
+            </div>
+            <div class="nav-box">
+                <a href="/breathholds/following">
+                    <img src="/images/following.svg" width="auto" height="30px">
+                </a>
+            </div>
+            <div class="nav-box">
+                <a href="/">
+                    <img src="/images/newlogo.png" width="auto" height="30px">
+                </a>
+            </div>
+            <div class="nav-box">
+                <a href="/breathholds/timer">
+                    <img src="/images/greyrediconplus.svg" width="auto" height="30px">
+                </a>
+            </div>
+            <div class="nav-box">
+                <a href="/profile">
+                    <img src="/images/user.svg" width="auto" height="30px">
+                </a>
+            </div>
+        </nav>
+
+        <div class="main-container">
+            <div class="profile-grid">
+                <div class="icon">
+                    <% if (currentUser.name==="Joe Doll" ) { %>
+                        <img src="/images/profileiconblue.svg" alt="" width="75px" height="75px">
+                        <% } else if (currentUser.name==="JJ Saavedra" ) { %>
+                            <img src="/images/profileiconyellow.svg" alt="" width="75px" height="75px">
+                            <% } else if (currentUser.name==="Jason Wolfe" ) { %>
+                                <img src="/images/profileiconpurple.svg" alt="" width="75px" height="75px">
+                                <% } else { %>
+                                    <img src="/images/profileiconorange.svg" alt="" width="75px" height="75px">
+                                    <% } %>
+
+                </div>
+                <!-- <div class="icon"><img src="/images/profileiconblue.svg" alt="" width="75px" height="75px"></div> -->
+                <div class="name">
+                    <%= currentUser.name %>
+                </div>
+                <div class="username">@<%= currentUser.username %>
+                </div>
+                <div class="holds">Holds</div>
+                <div class="holds-value">
+                    <%= currentUser.totalHolds %>
+                </div>
+                <div class="record">Record</div>
+                <div class="record-value">
+                    <%= currentUser.recordHold %>
+                </div>
+                <div class="average">Average</div>
+                <div class="average-value">
+                    <%= currentUser.avgHold %>
+                </div>
+                <div class="last-5">Last 5</div>
+                <div class="last-5-value">TBD</div>
+                <div class="following">Following</div>
+                <div class="followed">
+                    <% for(i = 1; i < currentUser.following.length; i++) {%>
+                        <p><%= currentUser.following[i] %></p>
+                    <% } %> 
+                </div>
+                <a href="/logout" class="edit-button">Logout</a>
+            </div>
+            <div class="search-container"></div>
+
+        </div>
+
+
+        <script src="/javascripts/validateForms.js"></script>
+</body>
+
+</html>
