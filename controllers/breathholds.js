@@ -71,7 +71,7 @@ module.exports.createTimedHold = async (req, res) => {
   });
   breathhold.username = req.user.username;
   await breathhold.save();
-  res.redirect('/breathholds');
+  res.redirect('/breathholds/following');
 };
 
 module.exports.showBreathhold = async (req, res) => {

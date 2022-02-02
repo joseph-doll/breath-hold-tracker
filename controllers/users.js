@@ -38,7 +38,7 @@ module.exports.renderLogin = (req, res) => {
 module.exports.login = (req, res) => {
   const { name } = req.user;
   req.flash('success', `Good luck with your holds ${name.split(' ')[0]}!`);
-  const redirectUrl = req.session.returnTo || '/breathholds';
+  const redirectUrl = req.session.returnTo || '/breathholds/following';
   delete req.session.returnTo;
   res.redirect(redirectUrl);
 };
@@ -47,7 +47,7 @@ module.exports.logout = (req, res) => {
   const { name } = req.user;
   req.logout();
   req.flash('success', `See ya next time ${name.split(' ')[0]}!`);
-  res.redirect('/login');
+  res.redirect('/');
 };
 
 module.exports.profile = (req, res) => {
