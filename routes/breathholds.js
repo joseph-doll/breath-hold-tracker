@@ -15,7 +15,7 @@ router
 
 router.get('/following', isLoggedIn, catchAsync(breathholds.following));
 
-router.get('/timer', isLoggedIn, breathholds.timer);
+router.get('/timer', breathholds.timer);
 
 router
     .route('/:id')
