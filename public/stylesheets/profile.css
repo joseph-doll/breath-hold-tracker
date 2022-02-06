@@ -57,12 +57,13 @@ body {
 }
 
 .profile-grid {
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     'icon icon'
+    'edit edit'
     'name name'
     'username username'
     'holds holds-value'
@@ -88,7 +89,7 @@ body {
   grid-area: username;
   place-self: center;
   color: #6d6d6d;
-  margin-top: -.5rem;
+  margin-top: -0.5rem;
 }
 
 .holds {
@@ -147,4 +148,16 @@ body {
   grid-area: followed;
   place-self: center;
   line-height: 1.25rem;
+}
+
+.edit {
+  grid-area: edit;
+  place-self: center;
+  margin-top: -.5rem;
+}
+
+.edit a {
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: #ff4242;
 }

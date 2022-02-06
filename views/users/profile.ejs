@@ -50,16 +50,18 @@
         <div class="main-container">
             <div class="profile-grid">
                 <div class="icon">
-                    <% if (currentUser.name==="Joe Doll" ) { %>
+                    <% if (currentUser.name==="Joseph Doll" ) { %>
                         <img src="/images/profileiconblue.svg" alt="" width="75px" height="75px">
                         <% } else if (currentUser.name==="JJ Saavedra" ) { %>
                             <img src="/images/profileiconyellow.svg" alt="" width="75px" height="75px">
-                            <% } else if (currentUser.name==="Jason Wolfe" ) { %>
+                            <% } else if (currentUser.name==="Wimmy Hoffa" ) { %>
                                 <img src="/images/profileiconpurple.svg" alt="" width="75px" height="75px">
                                 <% } else { %>
                                     <img src="/images/profileiconorange.svg" alt="" width="75px" height="75px">
                                     <% } %>
 
+                </div>
+                <div class="edit"><a href="/profileEdit">EDIT</a>
                 </div>
                 <!-- <div class="icon"><img src="/images/profileiconblue.svg" alt="" width="75px" height="75px"></div> -->
                 <div class="name">
