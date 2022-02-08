@@ -62,34 +62,39 @@ module.exports.editProfile = (req, res) => {
 };
 
 module.exports.updateProfile = async (req, res) => {
-  const { id, username } = req.user;
-  const oldIcon = req.user.iconFilename;
-  let { isPrivate, name } = req.body.user;
-  isPrivate === 'true' ? (isPrivate = true) : (isPrivate = false);
-  if (!req.file) {
-    await BreathHold.updateMany(
-      { username: username },
-      { isPrivate: isPrivate, name: name }
-    );
-    await User.findByIdAndUpdate(id, {
-      isPrivate: isPrivate,
-      name: name,
-    });
-  } else {
-    const { path, filename } = req.file;
-    if (!oldIcon == '') {
-      await cloudinary.uploader.destroy(oldIcon);
+  try {
+    const { id, username } = req.user;
+    const oldIcon = req.user.iconFilename;
+    let { isPrivate, name } = req.body.user;
+    isPrivate === 'true' ? (isPrivate = true) : (isPrivate = false);
+    if (!req.file) {
+      await BreathHold.updateMany(
+        { username: username },
+        { isPrivate: isPrivate, name: name }
+      );
+      await User.findByIdAndUpdate(id, {
+        isPrivate: isPrivate,
+        name: name,
+      });
+    } else {
+      const { path, filename } = req.file;
+      if (!oldIcon == '') {
+        await cloudinary.uploader.destroy(oldIcon);
+      }
+      await BreathHold.updateMany(
+        { username: username },
+        { isPrivate: isPrivate, name: name, icon: path }
+      );
+      await User.findByIdAndUpdate(id, {
+        isPrivate: isPrivate,
+        name: name,
+        icon: path,
+        iconFilename: filename,
+      });
     }
-    await BreathHold.updateMany(
-      { username: username },
-      { isPrivate: isPrivate, name: name, icon: path }
-    );
-    await User.findByIdAndUpdate(id, {
-      isPrivate: isPrivate,
-      name: name,
-      icon: path,
-      iconFilename: filename,
-    });
+    res.redirect('/profile');
+  } catch (err) {
+    req.flash('error', err.message);
+    res.redirect('/profile');
   }
-  res.redirect('/profile');
 };
