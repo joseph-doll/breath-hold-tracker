@@ -61,14 +61,11 @@
                         <input class="form-control form-control-sm mt-2" type="text" id="name" name="user[name]"
                             value="<%= currentUser.name%>" required />
                     </div>
-                    
-                    <% if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){ %> 
                     <div>
                         <label for="user[icon]" class="form-label mb-1 pt-2">Icon</label>
                         <input class="form-control form-control-sm mt-2" id="user[icon]" type="file" accept="image/*"
                             name="user[icon]">
                     </div>
-                    <% } %> 
                     <div class="private pt-3">
                         <p>Private</p>
                     </div>
