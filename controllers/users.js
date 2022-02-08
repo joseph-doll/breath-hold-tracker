@@ -62,7 +62,6 @@ module.exports.editProfile = (req, res) => {
 };
 
 module.exports.updateProfile = async (req, res) => {
-  try {
     const { id, username } = req.user;
     const oldIcon = req.user.iconFilename;
     let { isPrivate, name } = req.body.user;
@@ -93,8 +92,4 @@ module.exports.updateProfile = async (req, res) => {
       });
     }
     res.redirect('/profile');
-  } catch (err) {
-    req.flash('error', err.message);
-    res.redirect('/profile');
-  }
 };
