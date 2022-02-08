@@ -43,7 +43,7 @@ const UserSchema = new Schema({
   },
   iconFilename: {
     type: String,
-    default: 'default',
+    default: '',
   },
 });
 

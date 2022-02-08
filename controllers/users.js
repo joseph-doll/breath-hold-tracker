@@ -77,12 +77,12 @@ module.exports.updateProfile = async (req, res) => {
     });
   } else {
     const { path, filename } = req.file;
-    if (!oldIcon === 'default') {
+    if (!oldIcon == '') {
       await cloudinary.uploader.destroy(oldIcon);
     }
     await BreathHold.updateMany(
       { username: username },
-      { isPrivate: isPrivate, name: name, icon: path, iconFilename: filename }
+      { isPrivate: isPrivate, name: name, icon: path }
     );
     await User.findByIdAndUpdate(id, {
       isPrivate: isPrivate,
