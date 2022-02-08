@@ -123,7 +123,7 @@ app.use(
       styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
       workerSrc: ["'self'", 'blob:'],
       objectSrc: [],
-      imgSrc: ["'self'", 'blob:', 'data:', 'https://images.unsplash.com/'],
+      imgSrc: ["'self'", 'blob:', 'data:', 'https://images.unsplash.com/', "https://res.cloudinary.com/fiddlydigits/"],
       fontSrc: ["'self'", ...fontSrcUrls],
     },
   })

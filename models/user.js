@@ -36,6 +36,15 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  icon: {
+    type: String,
+    default:
+      'https://res.cloudinary.com/fiddlydigits/image/upload/v1644267579/HoldIt/profileiconred_kzmek4.png',
+  },
+  iconFilename: {
+    type: String,
+    default: 'default',
+  },
 });
 
 UserSchema.plugin(passportLocalMongoose);

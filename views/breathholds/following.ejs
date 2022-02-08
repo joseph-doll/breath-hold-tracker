@@ -58,15 +58,7 @@
 
                         <!-- Profile-Icon -->
                         <div class="profile-icon">
-                            <% if (breathhold.name==="Joseph Doll" ) { %>
-                                <img src="/images/profileiconblue.svg" alt="">
-                                <% } else if (breathhold.name==="JJ Saavedra" ) { %>
-                                    <img src="/images/profileiconyellow.svg" alt="">
-                                    <% } else if (breathhold.name==="Wimmy Hoffa" ) { %>
-                                        <img src="/images/profileiconpurple.svg" alt="">
-                                        <% } else { %>
-                                            <img src="/images/profileiconorange.svg" alt="">
-                                            <% } %>
+                                <img src="<%= breathhold.icon%>" alt="" class="profile-icon-image">
                         </div>
 
                         <!-- Name -->

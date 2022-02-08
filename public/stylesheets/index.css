@@ -28,6 +28,13 @@ body {
     justify-self: center;
 }
 
+.profile-icon-image {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
 .name {
     grid-area: name;
     padding: 1.25rem 0 0 1rem;

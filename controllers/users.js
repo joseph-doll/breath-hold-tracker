@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const BreathHold = require('../models/breathHold');
+const { cloudinary } = require('../cloudinary');
 
 module.exports.renderRegister = (req, res) => {
   res.render('users/register');
@@ -62,16 +63,33 @@ module.exports.editProfile = (req, res) => {
 
 module.exports.updateProfile = async (req, res) => {
   const { id, username } = req.user;
+  const oldIcon = req.user.iconFilename;
   let { isPrivate, name } = req.body.user;
   isPrivate === 'true' ? (isPrivate = true) : (isPrivate = false);
-  await User.findByIdAndUpdate(id, {
-    isPrivate: isPrivate,
-    name: name,
-  });
-  await BreathHold.updateMany(
-    { username: username },
-    { isPrivate: isPrivate, name: name }
-  );
-  req.flash('success', 'Update Successful');
+  if (!req.file) {
+    await BreathHold.updateMany(
+      { username: username },
+      { isPrivate: isPrivate, name: name }
+    );
+    await User.findByIdAndUpdate(id, {
+      isPrivate: isPrivate,
+      name: name,
+    });
+  } else {
+    const { path, filename } = req.file;
+    if (!oldIcon === 'default') {
+      await cloudinary.uploader.destroy(oldIcon);
+    }
+    await BreathHold.updateMany(
+      { username: username },
+      { isPrivate: isPrivate, name: name, icon: path, iconFilename: filename }
+    );
+    await User.findByIdAndUpdate(id, {
+      isPrivate: isPrivate,
+      name: name,
+      icon: path,
+      iconFilename: filename,
+    });
+  }
   res.redirect('/profile');
 };

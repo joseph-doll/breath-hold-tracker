@@ -70,6 +70,7 @@ module.exports.createTimedHold = async (req, res) => {
     avgHold: avgHold,
   });
   breathhold.username = req.user.username;
+  breathhold.icon = req.user.icon;
   await breathhold.save();
   res.redirect('/breathholds/following');
 };

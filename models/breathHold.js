@@ -31,7 +31,8 @@ const BreathHoldSchema = new Schema({
   isPrivate: {
     type: Boolean,
     default: false,
-  }
+  },
+  icon: String,
 });
 
 module.exports = mongoose.model('Breathhold', BreathHoldSchema);
