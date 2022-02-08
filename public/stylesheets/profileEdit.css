@@ -88,3 +88,9 @@ body {
     display: none;
   }
 }
+
+@media (orientation: landscape) {
+  .icon-upload {
+    display: none;
+  }
+}
