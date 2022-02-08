@@ -11,7 +11,7 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: 'HoldIt',
-    allowedFormats: ['jpeg', 'jpg', 'png', 'svg'],
+    // allowedFormats: ['jpeg', 'jpg', 'png'],
   },
 });
 
