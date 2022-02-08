@@ -76,9 +76,7 @@ module.exports.updateProfile = async (req, res) => {
       name: name,
     });
   } else {
-    console.log(req.file);
     const { path, filename } = req.file;
-    console.log(path);
     if (!oldIcon === 'default') {
       await cloudinary.uploader.destroy(oldIcon);
     }
